@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    android:onClick="onClick"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/sliding_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x10"
+        android:fillViewport="true"
+        app:tabGravity="center"
+        app:tabIndicatorColor="@color/transparent"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/white" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/sliding_tabs"
+        android:layout_above="@+id/btn_select_packagef"
+        android:layout_centerInParent="true"
+        android:clipToPadding="false"
+        android:paddingEnd="@dimen/x15"
+        android:paddingStart="@dimen/x15" />
+
+    <Button
+        android:id="@+id/btn_select_packagef"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/x10"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:background="@drawable/button_golden"
+        android:text="@string/select_package"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x18"
+        android:layout_marginTop="@dimen/x5"/>
+
+</RelativeLayout>

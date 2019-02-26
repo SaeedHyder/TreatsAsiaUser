@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x30"
+        android:orientation="vertical">
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/verify_your"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x20"
+            app:typeface="Roboto-Regular.ttf" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x2"
+            android:gravity="center"
+            android:text="@string/phone_number"
+            android:textColor="@color/golden"
+            android:textSize="@dimen/x30"
+            app:typeface="Roboto-Regular.ttf" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x5"
+            android:gravity="center"
+            android:text="@string/a_verification_code_has_been_sent_to_your_mobile_phone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x14"
+            app:typeface="Roboto-Regular.ttf" />
+
+        <com.app.usertreatzasia.ui.views.PinEntryEditText
+            android:id="@+id/txt_pin_entry"
+            android:layout_width="@dimen/x250"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:digits="1234567890"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="4"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/x20"
+            android:visibility="visible"
+            app:pinLineColors="@color/white"
+            android:alpha="0.8"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/did_not_get_code_yet_wait_for"
+                android:textColor="@color/light_grey"
+                android:textSize="@dimen/x14"
+                app:typeface="Roboto-Regular.ttf"
+                android:layout_marginRight="@dimen/x2"/>
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="03:45"
+                android:textColor="@color/golden"
+                android:textSize="@dimen/x14"
+                app:typeface="Roboto-Regular.ttf"
+                android:layout_marginRight="@dimen/x2"/>
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_seconds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="seconds"
+                android:textColor="@color/light_grey"
+                android:textSize="@dimen/x14"
+                app:typeface="Roboto-Regular.ttf" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x30"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:background="@drawable/button_golden"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="@dimen/x18"/>
+
+</LinearLayout>

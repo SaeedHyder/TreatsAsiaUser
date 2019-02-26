@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:onClick="onClick"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/x10"
+        android:background="@drawable/bg_rounded_white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x150">
+
+            <ImageView
+                android:id="@+id/iv_eventImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/x25"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/shape">
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/txt_paid_free"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/x14"
+                    android:layout_marginLeft="@dimen/x5"
+                    android:gravity="center"
+                    tools:text="Cash Voucher"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x14"
+                    app:typeface="Roboto-Regular.ttf" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity=""
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_marginTop="@dimen/x5"
+            android:orientation="horizontal">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/txt_EventTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:alpha="0.4"
+                android:gravity="center_vertical|top"
+                tools:text="Event Title Here"
+                android:textColor="@color/black"
+                android:textSize="@dimen/x16"
+                app:typeface="Roboto-Regular.ttf" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/x10"
+                android:layout_weight="0.4"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="start"
+                    android:layout_marginRight="@dimen/x2"
+                    android:layout_marginLeft="@dimen/x2"
+                    android:visibility="gone">
+
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:id="@+id/txtPoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:alpha="0.8"
+                        android:gravity="center"
+                        tools:text="50"
+                        android:textColor="@color/appGolden"
+                        android:textSize="@dimen/x15"
+                        app:typeface="Roboto-Regular.ttf" />
+
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:alpha="0.8"
+                        android:text="Points"
+                        android:gravity="center"
+                        android:textColor="@color/appGolden"
+                        android:textSize="@dimen/x15"
+                        app:typeface="Roboto-Regular.ttf" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_credits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="start"
+                    android:layout_marginRight="@dimen/x2"
+                    android:layout_marginLeft="@dimen/x2"
+                    android:visibility="gone">
+
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:id="@+id/txtCredits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:alpha="0.8"
+                        tools:text="50"
+                        android:gravity="center"
+                        android:textColor="@color/appGolden"
+                        android:textSize="@dimen/x15"
+                        app:typeface="Roboto-Regular.ttf" />
+
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:alpha="0.8"
+                        android:text="$"
+                        android:gravity="center"
+                        android:textColor="@color/appGolden"
+                        android:textSize="@dimen/x15"
+                        app:typeface="Roboto-Regular.ttf" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_cash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="start"
+                    android:layout_marginRight="@dimen/x2"
+                    android:layout_marginLeft="@dimen/x2"
+                    android:visibility="gone">
+
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:id="@+id/txtCash"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_weight="0.6"
+                        android:alpha="0.8"
+                        tools:text="123456789"
+                        android:gravity="center"
+                        android:textColor="@color/appGolden"
+                        android:textSize="@dimen/x15"
+                        app:typeface="Roboto-Regular.ttf" />
+
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:id="@+id/currency_type_cash"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:layout_weight="0.4"
+                        android:alpha="0.8"
+                        tools:text="SGD"
+                        android:gravity="top"
+                        android:textColor="@color/appGolden"
+                        android:textSize="@dimen/x15"
+                        app:typeface="Roboto-Regular.ttf" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_free"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="start"
+                    android:layout_marginRight="@dimen/x2"
+                    android:layout_marginLeft="@dimen/x2"
+                    android:visibility="gone">
+
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:alpha="0.8"
+                        android:text="Free"
+                        android:gravity="center"
+                        android:textColor="@color/appGolden"
+                        android:textSize="@dimen/x15"
+                        app:typeface="Roboto-Regular.ttf" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/iv_favorite"
+                android:layout_width="@dimen/x20"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:layout_gravity="top"
+                android:layout_marginLeft="@dimen/x5"
+                android:layout_marginRight="@dimen/x10"
+                android:layout_marginTop="@dimen/x5"
+                android:button="@drawable/checkbox_favourite"
+                android:checked="false" />
+
+        </LinearLayout>
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/txtEventDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x10"
+            android:layout_marginEnd="@dimen/x10"
+            android:layout_marginTop="@dimen/x5"
+            android:layout_marginBottom="@dimen/x5"
+            android:gravity="start"
+            android:text="@string/lorem_ipsum1"
+            android:textSize="10sp"
+            app:typeface="Roboto-Regular.ttf" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:alpha="0.1"
+            android:background="@color/light_grey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/x40"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/time" />
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:gravity="center_vertical"
+                    android:text="@string/expires_on"
+                    android:textSize="@dimen/x12"
+                    app:typeface="Roboto-Regular.ttf" />
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/txtExpiresOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x2"
+                    android:gravity="center_vertical"
+                    android:text="June 25 2017"
+                    android:textSize="@dimen/x12"
+                    app:typeface="Roboto-Regular.ttf" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/x1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x3"
+                android:layout_marginRight="@dimen/x3"
+                android:alpha="0.1"
+                android:background="@color/light_grey" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/x2"
+                    android:src="@drawable/address" />
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x2"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
+                    android:text="4100 Federal Blvd "
+                    android:textSize="@dimen/x12"
+                    app:typeface="Roboto-Regular.ttf" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_ViewDetail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x40"
+            android:background="@color/lightBlack"
+            android:text="View Details"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

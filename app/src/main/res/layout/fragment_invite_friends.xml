@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <com.app.usertreatzasia.ui.views.AnyTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/x40"
+        android:layout_marginStart="@dimen/x40"
+        android:layout_marginTop="@dimen/x30"
+        android:gravity="center_horizontal"
+        android:text="@string/want_more"
+        android:textColor="@color/white"
+        android:textSize="@dimen/s22"
+        app:typeface="Roboto-Regular.ttf" />
+
+    <com.app.usertreatzasia.ui.views.AnyTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/x5"
+        android:layout_marginEnd="@dimen/x40"
+        android:layout_marginStart="@dimen/x40"
+        android:layout_marginTop="@dimen/x5"
+        android:gravity="center_horizontal"
+        android:text="@string/treatz_from_us"
+        android:textColor="#DBA431"
+        android:textSize="@dimen/s25"
+        app:typeface="Roboto-Regular.ttf" />
+
+    <com.app.usertreatzasia.ui.views.AnyTextView
+        android:id="@+id/txt_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/x40"
+        android:layout_marginStart="@dimen/x40"
+        android:alpha="0.8"
+        android:gravity="center"
+        android:text="@string/invite_friends_message"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x15"
+        app:typeface="Roboto-Regular.ttf" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x50"
+        android:layout_marginEnd="@dimen/x35"
+        android:layout_marginStart="@dimen/x35"
+        android:layout_marginTop="@dimen/x30">
+
+        <ImageView
+            android:id="@+id/img_code"
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/x20"
+            android:layout_centerVertical="true"
+            android:src="@drawable/gift" />
+
+        <View
+            android:id="@+id/dummyline"
+            android:layout_width="@dimen/x1"
+            android:layout_height="@dimen/x30"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x10"
+            android:layout_marginStart="@dimen/x10"
+            android:layout_toEndOf="@+id/img_code"
+            android:background="@color/white" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/txt_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/dummyline"
+            android:layout_toStartOf="@+id/btn_copy_code"
+            android:gravity="start"
+            tools:text="AZQ-1317"
+            android:textAlignment="inherit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/s18"
+            app:typeface="Roboto-Regular.ttf" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/btn_copy_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_horizontal"
+            android:text="@string/copy"
+            android:textColor="#DBA431"
+            android:textSize="@dimen/s18"
+            app:typeface="Roboto-Regular.ttf"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:layout_marginEnd="@dimen/x35"
+        android:layout_marginStart="@dimen/x35"
+        android:layout_marginTop="@dimen/x10"
+        android:alpha="0.8"
+        android:background="@color/white" />
+
+    <Button
+        android:id="@+id/btn_invite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/x35"
+        android:layout_marginStart="@dimen/x35"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@drawable/button_golden"
+        android:text="@string/intite_friends"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x18" />
+
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/x35"
+        android:layout_marginStart="@dimen/x35"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@drawable/border_white"
+        android:text="Skip"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x18" />
+</LinearLayout>

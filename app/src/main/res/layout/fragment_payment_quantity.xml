@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x30"
+        android:layout_margin="@dimen/x10"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/tv_credit_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x3"
+            android:layout_weight="0.6"
+            android:gravity="start"
+            android:text="Required Points"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x14"
+            app:typeface="Roboto-Regular.ttf"/>
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/tv_credit_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/x20"
+            android:layout_marginLeft="@dimen/x3"
+            android:layout_weight="0.4"
+            android:gravity="end"
+            tools:text="250"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x14"
+            app:typeface="Roboto-Regular.ttf"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:layout_marginBottom="@dimen/x5"
+        android:layout_marginTop="@dimen/x5"
+        android:alpha="0.4"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x10"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="0.7">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_buy_lucky"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Buy Lucky Draw Chances"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x14"
+                app:typeface="Roboto-Regular.ttf"/>
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_sub_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Increase your chance to win this reward"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x10"
+                app:typeface="Roboto-Regular.ttf"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="0.4"
+            android:gravity="center">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Qty"
+                android:textColor="@color/white"
+                app:typeface="Roboto-Regular.ttf"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="0.45"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/ll_up"
+                    android:layout_width="@dimen/x25"
+                    android:layout_height="@dimen/x25"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_up"
+                        android:layout_width="@dimen/x20"
+                        android:layout_height="@dimen/x20"
+                        android:background="@drawable/plus"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/x25"
+                    android:layout_height="@dimen/x25"
+                    android:gravity="center">
+
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:id="@+id/txtQuantityNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        tools:text="3"
+                        android:textColor="@color/white"
+                        app:typeface="Roboto-Regular.ttf"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_down"
+                    android:layout_width="@dimen/x25"
+                    android:layout_height="@dimen/x25"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/iv_down"
+                        android:layout_width="@dimen/x20"
+                        android:layout_height="@dimen/x20"
+                        android:background="@drawable/minus" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:layout_marginBottom="@dimen/x5"
+        android:layout_marginTop="@dimen/x5"
+        android:alpha="0.4"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <CheckBox
+        android:id="@+id/rbtn_samsung"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/x50"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginEnd="@dimen/x10"
+        android:button="@drawable/checkbox_drawable"
+        android:checked="true"
+        android:enabled="false"
+        android:paddingStart="@dimen/x10"
+        android:text="Use Points"
+        android:textColor="@color/white"
+        android:textSize="@dimen/s15"/>
+
+    <com.app.usertreatzasia.ui.views.AnyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/x2"
+        android:text="("
+        android:textColor="@color/white"
+        app:typeface="Roboto-Regular.ttf" />
+
+    <com.app.usertreatzasia.ui.views.AnyTextView
+        android:id="@+id/txt_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:typeface="Roboto-Regular.ttf"
+        tools:text="1500" />
+
+    <com.app.usertreatzasia.ui.views.AnyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=")"
+        android:textColor="@color/white"
+        app:typeface="Roboto-Regular.ttf" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/x10"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@drawable/button_golden"
+        android:text="@string/proceed"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/s15"/>
+
+</LinearLayout>

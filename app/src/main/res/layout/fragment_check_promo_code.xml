@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginEnd="@dimen/x10">
+
+        <CheckBox
+            android:id="@+id/rbtn_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x50"
+            android:layout_marginEnd="@dimen/x2"
+            android:button="@drawable/checkbox_drawable"
+            android:checked="true"
+            android:paddingStart="@dimen/x10"
+            android:text="@string/use_cash"
+            android:textColor="@color/white"
+            android:textSize="@dimen/s15" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x2"
+            android:text="("
+            app:typeface="Roboto-Regular.ttf"
+            android:textColor="@color/white"/>
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/txt_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1500"
+            app:typeface="Roboto-Regular.ttf"
+            android:textColor="@color/white"/>
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=")"
+            app:typeface="Roboto-Regular.ttf"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:alpha="0.8"
+        android:background="@color/border_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_marginBottom="@dimen/x20"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:background="@drawable/button_white">
+
+        <com.app.usertreatzasia.ui.views.AnyEditTextView
+            android:id="@+id/edt_enter_promo_code"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x40"
+            android:hint="@string/enter_promo_code"
+            android:paddingLeft="@dimen/x10"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/x15"
+            app:typeface="Roboto-Regular.ttf"
+            android:gravity="center"
+            android:maxLines="1"
+            app:testType="nocheck"
+            android:inputType="textNoSuggestions"
+            android:maxLength="20"
+            android:singleLine="true"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginBottom="@dimen/x20"
+        android:background="@drawable/button_golden"
+        android:text="@string/proceed"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x18" />
+</LinearLayout>

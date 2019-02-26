@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:onClick="onClick"
+    android:background="@drawable/roundshapelayout"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/textLayout"
+        android:layout_width="@dimen/x340"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/x10"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/txt_Logout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginRight="@dimen/x20"
+            android:gravity="center"
+            android:text="Enter Credit Amount "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:typeface="Roboto-Bold.ttf"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginTop="@dimen/x10"
+            android:alpha="0.2"
+            android:background="@color/black"/>
+
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/txt_logout_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_marginTop="@dimen/x30"
+            android:layout_marginBottom="@dimen/x30"
+            android:gravity="center"
+            android:text="Are you sure you want to cash out ## credits to points"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/x17"
+            app:typeface="Roboto-Regular.ttf" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:alpha="0.2"
+        android:background="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_No"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/x7"
+            android:layout_marginBottom="@dimen/x5"
+            android:text="@string/no"
+            android:background="@color/transparent"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x16" />
+
+        <View
+            android:layout_width="@dimen/x1"
+            android:layout_height="fill_parent"
+            android:alpha="0.1"
+            android:background="@color/black" />
+
+        <Button
+            android:id="@+id/btn_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_gold"
+            android:layout_marginRight="@dimen/x7"
+            android:layout_marginBottom="@dimen/x5"
+            android:background="@color/transparent"
+            android:textSize="@dimen/x16"
+            android:text="@string/yes"
+            android:textAllCaps="false"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.app.usertreatzasia.ui.views.AnyTextView
+        android:id="@+id/txt_bullet_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10"
+        android:layout_marginBottom="@dimen/x10"
+        android:drawableLeft="@drawable/circle"
+        android:drawablePadding="@dimen/x10"
+        android:gravity="start"
+        android:text="@string/to_get_rewards_kind_of_lucky_draw_concept_chances"
+        android:textColor="@color/light_grey"
+        android:textSize="@dimen/x15"
+        app:typeface="Roboto-Regular.ttf" />
+
+</LinearLayout>

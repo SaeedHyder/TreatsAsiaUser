@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x20"
+            android:text="PRESTIGE"
+            android:textColor="#545454"
+            android:textSize="@dimen/x18"
+            app:typeface="Roboto-Regular.ttf" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/textView_small"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x20"
+            android:layout_marginTop="@dimen/x1"
+            android:text="MEMBERS"
+            android:textColor="#545454"
+            android:textSize="@dimen/x12"
+            app:typeface="Roboto-Regular.ttf" />
+
+    </LinearLayout>
+
+</LinearLayout>

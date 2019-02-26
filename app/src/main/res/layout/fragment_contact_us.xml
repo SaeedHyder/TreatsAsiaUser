@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:onClick="onClick"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x150"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_marginBottom="@dimen/x5"
+        android:background="@drawable/bg_rectangle__not_rounded_white"
+        android:orientation="vertical">
+
+        <com.app.usertreatzasia.ui.views.AnyEditTextView
+            android:id="@+id/edt_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x10"
+            android:hint="@string/type_your_message_here"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/x15"
+            android:background="@color/transparent"
+            android:maxLines="4"
+            android:maxLength="200"
+            android:imeOptions="actionDone"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.-;:()#,/_\"
+            app:typeface="Roboto-Regular.ttf"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10"
+        android:background="@drawable/button_golden"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textSize="@dimen/x18"/>
+
+</LinearLayout>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    android:onClick="onClick"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_total_credits"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/x10"
+            android:paddingLeft="@dimen/x20"
+            android:paddingRight="@dimen/x20"
+            android:paddingTop="@dimen/x10"
+            android:orientation="horizontal">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="@string/total_credits"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf"
+                android:drawableLeft="@drawable/credits_wallet"
+                android:drawablePadding="@dimen/x10"/>
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_amount_total_credits"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:alpha="0.2"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/ll_total_points"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:paddingLeft="@dimen/x20"
+            android:paddingRight="@dimen/x20"
+            android:paddingTop="@dimen/x10"
+            android:orientation="horizontal">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="@string/total_points"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf"
+                android:drawableLeft="@drawable/points_wallet"
+                android:drawablePadding="@dimen/x10"/>
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_amount_total_points"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:alpha="0.4"
+            android:background="@color/appGolden" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginBottom="@dimen/x30"
+            android:layout_marginTop="@dimen/x30"
+            android:alpha="0.2"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:alpha="0.4"
+            android:background="@color/appGolden" />
+
+        <LinearLayout
+            android:id="@+id/ll_coupons_available"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x10"
+            android:paddingLeft="@dimen/x20"
+            android:paddingRight="@dimen/x20"
+            android:paddingTop="@dimen/x10"
+            android:orientation="horizontal">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="@string/vouchers_available"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf"
+                android:drawableLeft="@drawable/voucher_wallet"
+                android:drawablePadding="@dimen/x10"/>
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_amount_vouchers_available"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:alpha="0.2"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/ll_event_tickets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x10"
+            android:paddingLeft="@dimen/x20"
+            android:paddingRight="@dimen/x20"
+            android:paddingTop="@dimen/x10"
+            android:orientation="horizontal">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="@string/event_tickets"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf"
+                android:drawableLeft="@drawable/events_wallet"
+                android:drawablePadding="@dimen/x10"/>
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_amount_event_ticket"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:alpha="0.2"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/ll_lucky_draw_chances"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x10"
+            android:paddingLeft="@dimen/x20"
+            android:paddingRight="@dimen/x20"
+            android:paddingTop="@dimen/x10"
+            android:orientation="horizontal">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="My Grab Rewards"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf"
+                android:drawableLeft="@drawable/rewards_wallet"
+                android:drawablePadding="@dimen/x10"/>
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_amount_lucky"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:alpha="0.2"
+            android:background="@color/white" />
+
+
+
+<!--        visibility gone for gifts section which
+        is now included within vouchers and gifts sector-->
+        <LinearLayout
+            android:id="@+id/ll_gifts_events_recieved"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x10"
+            android:paddingLeft="@dimen/x20"
+            android:paddingRight="@dimen/x20"
+            android:paddingTop="@dimen/x10"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="@string/gifts_events_recieved"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf" />
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_amount_gifts_events_recieved"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:alpha="0.2"
+            android:background="@color/white"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/ll_gifts_recieved"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x10"
+            android:paddingLeft="@dimen/x20"
+            android:paddingRight="@dimen/x20"
+            android:paddingTop="@dimen/x10"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="@string/gifts_recieved"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf" />
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_amount_gifts_recieved"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:alpha="0.2"
+            android:background="@color/white"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</ScrollView>

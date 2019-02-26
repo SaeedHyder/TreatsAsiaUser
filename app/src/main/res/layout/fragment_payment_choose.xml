@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    android:onClick="onClick"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_points"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/x10"
+        android:layout_marginStart="@dimen/x10"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/x40"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical"
+            android:text="Required Points"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x15"
+            app:typeface="Roboto-Regular.ttf" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/txt_points"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x40"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x15"
+            app:typeface="Roboto-Regular.ttf"
+            tools:text="50" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:alpha="0.3"
+        android:background="@color/border_color" />
+
+    <LinearLayout
+        android:id="@+id/ll_credits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/x10"
+        android:layout_marginStart="@dimen/x10"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/x40"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical"
+            android:text="Required Credits"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x15"
+            app:typeface="Roboto-Regular.ttf" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/txt_credits"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x40"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x15"
+            app:typeface="Roboto-Regular.ttf"
+            tools:text="50" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:alpha="0.3"
+        android:background="@color/border_color" />
+
+    <LinearLayout
+        android:id="@+id/ll_cash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/x10"
+        android:layout_marginStart="@dimen/x10"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/x40"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical"
+            android:text="Required Cash"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x15"
+            app:typeface="Roboto-Regular.ttf" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/txt_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x40"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x15"
+            app:typeface="Roboto-Regular.ttf"
+            tools:text="50" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:alpha="0.3"
+        android:background="@color/border_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/cbPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/x40"
+                android:button="@drawable/selector_chkbox"
+                android:padding="@dimen/x10"
+                android:text="Points"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:alpha="0.3"
+                android:background="@color/grey" />
+
+            <RadioButton
+                android:id="@+id/cbCredits"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/x40"
+                android:button="@drawable/selector_chkbox"
+                android:padding="@dimen/x10"
+                android:text="Credits"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:alpha="0.3"
+                android:background="@color/grey" />
+
+            <RadioButton
+                android:id="@+id/cbCash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/selector_chkbox"
+                android:padding="@dimen/x10"
+                android:text="Cash"
+                android:textColor="@color/white"
+                android:visibility="gone"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="@dimen/x15"
+                android:alpha="0.3"
+                android:background="@color/grey" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnProceed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x20"
+            android:background="@drawable/button_golden"
+            android:text="@string/proceed"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

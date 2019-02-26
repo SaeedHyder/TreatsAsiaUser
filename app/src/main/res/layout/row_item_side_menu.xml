@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/black">
+
+    <com.app.usertreatzasia.ui.views.AnyTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/x20"
+        android:layout_marginTop="@dimen/x25"
+        android:alpha="0.7"
+        android:gravity="start"
+        android:text="@string/Home"
+        android:textColor="@color/white"
+        android:textSize="@dimen/s18"
+        app:typeface="Roboto-Bold.ttf" />
+
+    <com.app.usertreatzasia.ui.views.AnyTextView
+        android:id="@+id/txt_badge_notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/badge_drawable_red"
+        android:layout_marginTop="@dimen/x20"
+        android:gravity="center"
+        android:maxLength="2"
+        android:paddingBottom="@dimen/x3"
+        android:paddingLeft="@dimen/x5"
+        android:paddingRight="@dimen/x5"
+        android:paddingTop="@dimen/x3"
+        android:layout_toEndOf="@id/title"
+        android:text="22"
+        android:textColor="@color/black"
+        android:textSize="@dimen/x7"
+        android:visibility="gone"
+        app:typeface="OpenSans-Regular.ttf" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/title"
+        android:background="@color/transparent"/>
+
+</RelativeLayout>

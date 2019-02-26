@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/x10"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x150">
+
+            <ImageView
+                android:id="@+id/offerImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/x25"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/shape"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/txt_paid_free"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x5"
+                    android:layout_marginRight="@dimen/x14"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x14"
+                    app:typeface="Roboto-Regular.ttf"
+                    tools:text="Cash Voucher" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_marginTop="@dimen/x5"
+            android:orientation="horizontal">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/txtDiscountDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf"
+                tools:text="Flat 20% off on Burger Kingsadsadsadasd" />
+
+            <CheckBox
+                android:id="@+id/iv_favorite"
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/x30"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x5"
+                android:button="@drawable/checkbox_favourite" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_amount_points"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_marginTop="@dimen/x3"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="horizontal">
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/txtActualAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:text="$602"
+                    android:textSize="@dimen/x12"
+                    app:typeface="Roboto-Regular.ttf" />
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/txtAfterDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:alpha="0.8"
+                    android:gravity="left"
+                    android:text="$482"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x15"
+                    app:typeface="Roboto-Regular.ttf" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="0.5"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/txtPointsAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:alpha="0.8"
+                    android:gravity="right"
+                    android:textColor="@color/appGolden"
+                    android:textSize="@dimen/x15"
+                    app:typeface="Roboto-Regular.ttf" />
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/txtPoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:alpha="0.8"
+                    android:text="Points"
+                    android:textColor="@color/light_grey"
+                    android:textSize="@dimen/x15"
+                    app:typeface="Roboto-Regular.ttf" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_promo_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_promo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/x4"
+                android:gravity="center_vertical"
+                android:text="@string/promo"
+                android:textColor="@color/light_grey"
+                android:textSize="@dimen/x15"
+                app:typeface="Roboto-Regular.ttf" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x4"
+                android:background="@drawable/rectangle_promo"
+                android:orientation="vertical">
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/tv_promo_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x2"
+                    android:layout_marginRight="@dimen/x2"
+                    android:padding="@dimen/x2"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x13"
+                    app:typeface="Roboto-Regular.ttf" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:alpha="0.1"
+            android:background="@color/light_grey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/x5"
+            android:layout_marginEnd="@dimen/x10"
+            android:layout_marginStart="@dimen/x10"
+            android:gravity="center">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/x5"
+                    android:drawableLeft="@drawable/time"
+                    android:drawablePadding="@dimen/x5"
+                    android:gravity="start"
+                    android:text=  "@string/expires_on"
+                    android:textSize="@dimen/x12"
+                    app:typeface="Roboto-Regular.ttf"
+                    android:layout_weight="0.5"/>
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/txtExpiresOn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="June 25 2017"
+                    android:textSize="@dimen/x12"
+                    app:typeface="Roboto-Regular.ttf"
+                    android:layout_weight="0.5"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/x1"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x3"
+                android:layout_marginRight="@dimen/x3"
+                android:alpha="0.1"
+                android:background="@color/light_grey" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/x10"
+                android:layout_weight="0.5"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <com.app.usertreatzasia.ui.views.AnyTextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x5"
+                    android:drawableLeft="@drawable/address"
+                    android:drawablePadding="@dimen/x5"
+                    android:gravity="center"
+                    android:textSize="@dimen/x12"
+                    app:typeface="Roboto-Regular.ttf"
+                    tools:text="4100 Federal Blvd" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_Voucher"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x40"
+            android:background="@color/lightBlack"
+            android:text="@string/redeem_voucher"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

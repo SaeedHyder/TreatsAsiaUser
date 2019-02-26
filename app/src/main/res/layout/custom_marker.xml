@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_marker_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent">
+
+
+    <LinearLayout
+        android:id="@+id/ll_Markerview"
+        android:layout_width="@dimen/x250"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:padding="@dimen/x10">
+
+        <TextView
+
+
+            android:id="@+id/txtHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:gravity="center|center_vertical|center_horizontal"
+
+            android:text="Campaign Launched"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|start"
+            android:text="on 25 january 2015 at newyprk" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

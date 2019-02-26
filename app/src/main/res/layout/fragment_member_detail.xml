@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    android:orientation="vertical">
+
+    <com.app.usertreatzasia.ui.views.AnyTextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x30"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginTop="@dimen/x20"
+        android:gravity="center_vertical"
+        android:text="Month"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x16"
+        app:typeface="Roboto-Regular.ttf" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="@dimen/x10"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginTop="@dimen/x5"
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/sp_months"
+            style="@style/spinner_style"
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/x30"
+            android:gravity="center_vertical"
+            android:layout_alignStart="@+id/tv_date"
+            android:layout_alignEnd="@+id/tv_date"
+            android:visibility="invisible" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x30"
+            android:background="@drawable/shape_rectangle_date"
+            android:drawablePadding="@dimen/x80"
+            android:drawableRight="@drawable/calender"
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/x10"
+            android:paddingStart="@dimen/x10"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x16"
+            app:typeface="Roboto-Regular.ttf"
+            tools:text="Month" />
+    </RelativeLayout>
+
+
+    <com.app.usertreatzasia.ui.views.ExpandedListView
+        android:id="@+id/lv_total_members"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_weight="0.9"
+        android:divider="@null"
+        android:scrollbars="none" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x30"
+        android:layout_marginBottom="@dimen/x10"
+        android:layout_marginEnd="@dimen/x20"
+        android:layout_marginStart="@dimen/x20"
+        android:layout_marginTop="@dimen/x10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:text="Total:"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x16"
+            app:typeface="Roboto-Regular.ttf" />
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/tv_total_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:gravity="end"
+            android:textColor="@color/appGolden"
+            android:textSize="@dimen/x16"
+            app:typeface="Roboto-Regular.ttf"
+            tools:text="AED 90" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:alpha="0.2"
+        android:background="@color/white" />
+
+</LinearLayout>

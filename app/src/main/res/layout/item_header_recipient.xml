@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_promo"
+        android:layout_marginLeft="@dimen/x5"
+        android:layout_marginRight="@dimen/x20"
+        android:orientation="vertical">
+
+        <com.app.usertreatzasia.ui.views.AnyTextView
+            android:id="@+id/tv_header_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:textSize="@dimen/x18"
+            android:padding="@dimen/x5"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            app:typeface="Roboto-Regular"/>
+    </LinearLayout>
+
+</LinearLayout>
