@@ -47,8 +47,7 @@ public class GiftRecievedBinder extends ViewBinder<WalletGiftEnt> {
         final ViewHolder viewHolder = (ViewHolder) view.getTag();
 
         imageLoader = ImageLoader.getInstance();
-        viewHolder.txtActualAmount.setVisibility(View.GONE);
-        viewHolder.txtAfterDiscount.setVisibility(View.GONE);
+
         if (prefHelper.getSelectedLanguage().equals(AppConstants.ENGLISH)) {
             viewHolder.txtDiscountDetail.setText(entity.getEvoucherDetail().getTitle() + "");
         } else if (prefHelper.getSelectedLanguage().equals(AppConstants.INDONESIAN)) {
@@ -58,19 +57,10 @@ public class GiftRecievedBinder extends ViewBinder<WalletGiftEnt> {
         }
 
         imageLoader.displayImage(entity.getEvoucherDetail().getProductDetail().getProductImage(), viewHolder.offerImage);
-        viewHolder.txtActualAmount.setPaintFlags(viewHolder.txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        viewHolder.txtActualAmount.setText("$" + entity.getEvoucherDetail().getProductDetail().getPrice() + "");
-        viewHolder.txtAfterDiscount.setText("$" + UtilsGlobal.getRemainingAmountForRedeemCoupon(Integer.parseInt(entity.getEvoucherDetail().getProductDetail().getPrice()), Integer.parseInt(entity.getEvoucherDetail().getAmount())));
 
-        updatedActualPrice = Float.valueOf(entity.getEvoucherDetail().getProductDetail().getPrice()) * prefHelper.getConvertedAmount();
-        String formattedValuePrice = String.format("%.2f", updatedActualPrice);
-        viewHolder.txtActualAmount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePrice + "");
-
-        //viewHolder.txtAfterDiscount.setText("$" + entity.getRewardPrice() + "");
-        updatedDiscountedPrice = Float.valueOf(UtilsGlobal.getRemainingAmountForRedeemCoupon(Integer.parseInt(entity.getEvoucherDetail().getProductDetail().getPrice()), Integer.parseInt(entity.getEvoucherDetail().getAmount()))) * prefHelper.getConvertedAmount();
+        updatedDiscountedPrice = Float.valueOf(UtilsGlobal.getRemainingAmountWithoutDollar(Integer.parseInt(entity.getEvoucherDetail().getAmount()), Integer.parseInt(entity.getEvoucherDetail().getProductDetail().getPrice()))) * prefHelper.getConvertedAmount();
         String formattedValuePriceDiscounted = String.format("%.2f", updatedDiscountedPrice);
-        viewHolder.txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
-
+        viewHolder.txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency()+" "+formattedValuePriceDiscounted);
 
         viewHolder.txtPaidFree.setText(UtilsGlobal.getVoucherType(entity.getEvoucherDetail().getType(), dockActivity));
         viewHolder.txtAddress.setText(entity.getEvoucherDetail().getLocation() + "");
@@ -89,8 +79,7 @@ public class GiftRecievedBinder extends ViewBinder<WalletGiftEnt> {
         });
         prefHelper.putLikeCountEvoucher(entity.getEvoucherDetail().getEvoucher_like());
 
-        viewHolder.txtActualAmount.setVisibility(View.GONE);
-        viewHolder.txtAfterDiscount.setVisibility(View.GONE);
+
     }
 
     static class ViewHolder extends BaseViewHolder {
@@ -100,8 +89,6 @@ public class GiftRecievedBinder extends ViewBinder<WalletGiftEnt> {
         AnyTextView txtPaidFree;
         @BindView(R.id.txtDiscountDetail)
         AnyTextView txtDiscountDetail;
-        @BindView(R.id.txtActualAmount)
-        AnyTextView txtActualAmount;
         @BindView(R.id.txtAfterDiscount)
         AnyTextView txtAfterDiscount;
         @BindView(R.id.txtGiftBy)

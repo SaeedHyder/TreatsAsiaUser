@@ -115,6 +115,7 @@ public class GiftRecievedFragment extends BaseFragment {
         titleBar.showBackButtonAsPerRequirement(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                 getDockActivity().popFragment();
                 getDockActivity().replaceDockableFragment(WalletFragment.newInstance(), "WalletFragment");
             }
         });
@@ -130,6 +131,7 @@ public class GiftRecievedFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txt_Vouchers:
+                getDockActivity().popFragment();
                 getDockActivity().replaceDockableFragment(HomeWalletFragment.newInstance(), "HomeWalletFragment");
                 break;
             case R.id.txt_Gifts:

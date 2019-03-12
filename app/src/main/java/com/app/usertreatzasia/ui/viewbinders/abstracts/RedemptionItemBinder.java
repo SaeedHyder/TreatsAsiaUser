@@ -2,15 +2,12 @@ package com.app.usertreatzasia.ui.viewbinders.abstracts;
 
 import android.app.Activity;
 import android.graphics.Paint;
-import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.app.usertreatzasia.R;
 import com.app.usertreatzasia.activities.DockActivity;
-
-
 import com.app.usertreatzasia.entities.RedemptionEnt;
 import com.app.usertreatzasia.fragments.RemainingAmountFragment;
 import com.app.usertreatzasia.global.AppConstants;
@@ -20,11 +17,8 @@ import com.app.usertreatzasia.helpers.DateHelper;
 import com.app.usertreatzasia.ui.views.AnyTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.util.regex.Pattern;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 
 
 public class RedemptionItemBinder extends ViewBinder<RedemptionEnt> {
@@ -36,10 +30,11 @@ public class RedemptionItemBinder extends ViewBinder<RedemptionEnt> {
     Float updatedDiscountedPrice;
     Float updatedRemainingAmount;
 
-    public RedemptionItemBinder(DockActivity dockActivity,BasePreferenceHelper prefHelper) {
+
+    public RedemptionItemBinder(DockActivity dockActivity, BasePreferenceHelper prefHelper) {
         super(R.layout.row_item_redemption);
-        this.dockActivity=dockActivity;
-        this.prefHelper=prefHelper;
+        this.dockActivity = dockActivity;
+        this.prefHelper = prefHelper;
     }
 
     @Override
@@ -52,41 +47,11 @@ public class RedemptionItemBinder extends ViewBinder<RedemptionEnt> {
     public void bindView(final RedemptionEnt entity, int position, int grpPosition, View view, Activity activity) {
         final ViewHolder viewHolder = (ViewHolder) view.getTag();
 
-        imageLoader=ImageLoader.getInstance();
+        imageLoader = ImageLoader.getInstance();
 
         viewHolder.txtActualAmount.setVisibility(View.GONE);
         viewHolder.txtAfterDiscount.setVisibility(View.GONE);
-/*        if (prefHelper.getSelectedLanguage().equals(AppConstants.ENGLISH)) {
-            //   viewHolder.txtDiscountDetail.setText(Html.fromHtml(discount));
-            if ((entity.getEvoucherDetail().getTitle() + "").contains("%")) {
-                viewHolder.txtOfferTitle.setText(UtilsGlobal.setSpanString(entity.getEvoucherDetail().getTitle(),
-                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getEvoucherDetail().getTitle() + ""),
-                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getEvoucherDetail().getTitle() + ""),
-                        dockActivity));
-            } else {
-                viewHolder.txtOfferTitle.setText(entity.getEvoucherDetail().getTitle() + "");
-            }
 
-            // viewHolder.txtDiscountDetail.setText(entity.getType() + " " + Html.fromHtml(discount)+ " off on " + entity.getMerchantDetail().getFirstName() + " "+entity.getMerchantDetail().getLastName());
-        } else if (prefHelper.getSelectedLanguage().equals(AppConstants.INDONESIAN)) {
-            if ((entity.getEvoucherDetail().getInTitle() + "").contains("%")) {
-                viewHolder.txtOfferTitle.setText(UtilsGlobal.setSpanString(entity.getEvoucherDetail().getInTitle(),
-                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getEvoucherDetail().getInTitle() + ""),
-                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getEvoucherDetail().getInTitle() + ""),
-                        dockActivity));
-            } else {
-                viewHolder.txtOfferTitle.setText(entity.getEvoucherDetail().getInTitle() + "");
-            }
-        } else {
-            if ((entity.getEvoucherDetail().getMaTitle() + "").contains("%")) {
-                viewHolder.txtOfferTitle.setText(UtilsGlobal.setSpanString(entity.getEvoucherDetail().getMaTitle(),
-                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern),entity.getEvoucherDetail().getMaTitle() + ""),
-                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getEvoucherDetail().getMaTitle() + ""),
-                        dockActivity));
-            } else {
-                viewHolder.txtOfferTitle.setText(entity.getEvoucherDetail().getMaTitle() + "");
-            }
-        }*/
 
         if (prefHelper.getSelectedLanguage().equals(AppConstants.ENGLISH)) {
             viewHolder.txtOfferTitle.setText(entity.getEvoucherDetail().getTitle() + "");
@@ -95,17 +60,14 @@ public class RedemptionItemBinder extends ViewBinder<RedemptionEnt> {
             viewHolder.txtOfferTitle.setText(entity.getEvoucherDetail().getInTitle() + "");
 
         } else if (prefHelper.getSelectedLanguage().equals(AppConstants.MALAYSIAN)) {
-            viewHolder.txtOfferTitle.setText(entity.getEvoucherDetail().getMaTitle()+"");
+            viewHolder.txtOfferTitle.setText(entity.getEvoucherDetail().getMaTitle() + "");
         } else {
             viewHolder.txtOfferTitle.setText(entity.getEvoucherDetail().getTitle() + "");
         }
 
         imageLoader.displayImage(entity.getEvoucherDetail().getProductDetail().getProductImage(), viewHolder.ivOfferImage);
 
-        //int discountAmount = (Integer.parseInt(entity.getEvoucherDetail().getProductDetail().getPrice()) / 100) * (Integer.parseInt(entity.getEvoucherDetail().getAmount()));
-        //int AfterDiscount = (Integer.parseInt(entity.getEvoucherDetail().getProductDetail().getPrice())) - discountAmount;
-//        viewHolder.txtAfterDiscount.setText("$" + AfterDiscount + "");
-        //viewHolder.txtAfterDiscount.setText("$" + UtilsGlobal.getRemainingAmountForRedeemCoupon(Integer.parseInt(entity.getEvoucherDetail().getProductDetail().getPrice()), Integer.parseInt((entity.getEvoucherDetail().getAmount()))));
+
         viewHolder.txtAfterDiscount.setText("$" + UtilsGlobal.getRemainingAmountForRedeemCoupon(Integer.parseInt((entity.getEvoucherDetail().getAmount())), Integer.parseInt(entity.getEvoucherDetail().getProductDetail().getPrice())));
         viewHolder.txtActualAmount.setPaintFlags(viewHolder.txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         viewHolder.txtActualAmount.setText("$" + entity.getEvoucherDetail().getProductDetail().getPrice() + "");
@@ -121,29 +83,32 @@ public class RedemptionItemBinder extends ViewBinder<RedemptionEnt> {
 
         viewHolder.txtRedemptionDate.setText(DateHelper.dateFormat(entity.getPurchaseDate(), AppConstants.DateFormat_DMY, AppConstants.DateFormat_YMD) + "");
 
-        if (entity.getRemainingAmount().equalsIgnoreCase("")){
+
+        if (entity.getRemainingAmount().equalsIgnoreCase("")) {
             viewHolder.txtAmountRemainings.setText(prefHelper.getConvertedAmountCurrrency() + " " + "0.00");
         } else {
-           // viewHolder.txtAmountRemainings.setText("$ "+entity.getRemainingAmount());
-
+            // viewHolder.txtAmountRemainings.setText("$ "+entity.getRemainingAmount());
             updatedRemainingAmount = Float.valueOf(entity.getRemainingAmount()) * prefHelper.getConvertedAmount();
             String formattedValue = String.format("%.2f", updatedRemainingAmount);
-            viewHolder.txtAmountRemainings.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
+            viewHolder.txtAmountRemainings.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValue + "");
         }
 
         viewHolder.ll_main_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //dockActivity.replaceDockableFragment(RemainingAmountFragment.newInstance(entity.getRemainingAmount(), entity.getEvoucherDetail().getProductDetail().getProductImage()),RemainingAmountFragment.class.getName());
-                dockActivity.replaceDockableFragment(RemainingAmountFragment.newInstance(formattedValuePriceDiscounted, entity.getEvoucherDetail().getProductDetail().getProductImage()),RemainingAmountFragment.class.getName());
+                String value = "";
+                if (!entity.getRemainingAmount().equalsIgnoreCase("")) {
+                    Float amount = Float.valueOf(entity.getRemainingAmount()) * prefHelper.getConvertedAmount();
+                    value = String.format("%.2f", amount);
+                }
+                dockActivity.replaceDockableFragment(RemainingAmountFragment.newInstance(value, entity.getEvoucherDetail().getProductDetail().getProductImage()), RemainingAmountFragment.class.getName());
             }
         });
 
-        viewHolder.txtActualAmount.setVisibility(View.GONE);
-        viewHolder.txtAfterDiscount.setVisibility(View.GONE);
+
     }
 
-    static class ViewHolder extends BaseViewHolder{
+    static class ViewHolder extends BaseViewHolder {
         @BindView(R.id.iv_offerImage)
         ImageView ivOfferImage;
         @BindView(R.id.txtOfferTitle)

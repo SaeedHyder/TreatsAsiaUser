@@ -38,7 +38,7 @@
                 android:textSize="@dimen/x14"
                 android:text="50% Off on KFC Zinger Burger"
                 tools:text="50% Off on KFC Zinger Burger"
-                app:typeface="Roboto-Bold.ttf"/>
+                app:typeface="Roboto-Regular.ttf"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

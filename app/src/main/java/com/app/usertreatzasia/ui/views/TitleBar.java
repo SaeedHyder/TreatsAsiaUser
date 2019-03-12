@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -32,7 +33,7 @@ public class TitleBar extends RelativeLayout {
     private TextView txtDone;
     private LinearLayout llSearch;
     private EditText edt_search;
-    private ImageView iv_cancel;
+    private FrameLayout iv_cancel;
     private ImageView iv_search;
     private CheckBox CBRight2;
     private ImageView btnRightFirst;
@@ -82,7 +83,7 @@ public class TitleBar extends RelativeLayout {
         txtBadge = (AnyTextView) findViewById(R.id.txtBadge);
         txtBadge0 = (AnyTextView) findViewById(R.id.txtBadge0);
         edt_search = (EditText) findViewById(R.id.edt_search);
-        iv_cancel = (ImageView) this.findViewById(R.id.iv_cancel);
+        iv_cancel = (FrameLayout) this.findViewById(R.id.iv_cancel);
         iv_search = (ImageView) this.findViewById(R.id.iv_search);
         llSearch = (LinearLayout) this.findViewById(R.id.llSearch);
         CBRight2=(CheckBox)this.findViewById(R.id.CBRight2);
@@ -221,9 +222,9 @@ public class TitleBar extends RelativeLayout {
     }
 
     public void showFavoriteButton(CheckBox.OnCheckedChangeListener Favorite) {
-        CBRight2.setVisibility(View.VISIBLE);
+       /* CBRight2.setVisibility(View.INVISIBLE);
         btnRight2.setVisibility(INVISIBLE);
-        CBRight2.setOnCheckedChangeListener(Favorite);
+        CBRight2.setOnCheckedChangeListener(Favorite);*/
     }
 
     public void setFavoriteButn(boolean status){
@@ -232,9 +233,12 @@ public class TitleBar extends RelativeLayout {
     }
 
     public void showShareButton(View.OnClickListener share) {
-        btnRight1.setVisibility(View.VISIBLE);
+   /*     btnRight1.setVisibility(View.VISIBLE);
         btnRight1.setOnClickListener(share);
-        btnRight1.setImageResource(R.drawable.share);
+        btnRight1.setImageResource(R.drawable.share);*/
+        btnRight2.setVisibility(View.VISIBLE);
+        btnRight2.setOnClickListener(share);
+        btnRight2.setImageResource(R.drawable.share);
     }
 
     public void showShareButtonEnd(View.OnClickListener share) {

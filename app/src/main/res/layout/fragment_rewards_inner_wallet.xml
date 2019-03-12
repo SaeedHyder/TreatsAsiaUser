@@ -21,8 +21,9 @@
         android:id="@+id/lv_rewards"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/x10"
-        android:layout_marginRight="@dimen/x10"
+        android:paddingTop="@dimen/x10"
+        android:paddingBottom="@dimen/x10"
+        android:clipToPadding="false"
         android:divider="@null"
         android:scrollbars="none"
         android:visibility="visible" />

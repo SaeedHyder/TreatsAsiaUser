@@ -50,10 +50,10 @@ public class PointHistoryBinder extends ViewBinder<PointHistoryEnt> {
         splittedDate = splited[0];
         splittedTime = splited[1];
 
-        viewHolder.tvCreditAmount.setText("(" + "$" + entity.getPoint() + ")" + "");
+        viewHolder.tvCreditAmount.setText("(" + entity.getPoint() + ")" + "");
 
         viewHolder.tvMsg.setText(entity.getMessage() + "");
-        viewHolder.tvDate.setText(splittedDate + "");
+        viewHolder.tvDate.setText(DateHelper.getLocalTimeDate2(entity.getCreatedAt()) + "");
         //viewHolder.tvTime.setText(splittedTime + "");
 
         try {

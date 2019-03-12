@@ -24,7 +24,7 @@
             android:layout_weight="0.7"
             android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
-            android:text="Total number of Merchants"
+            android:text="@string/total_merchants"
             android:textColor="@color/white"
             android:textSize="@dimen/x17"
             app:typeface="Roboto-Regular.ttf" />
@@ -82,6 +82,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/golden_straight"
         android:layout_marginLeft="@dimen/x5"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <com.app.usertreatzasia.ui.views.AnyTextView

@@ -8,7 +8,7 @@
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
 
-    <string name="api_key">AIzaSyDu4yb8rqG-Y14svz19ebqmzwbO1wp85uQ</string>
+    <string name="api_key">AIzaSyDVoMO_xVCHLbv2ozuDMfEK5jq9IyZ_iwI</string>
     <string name="app_name">Treatz Asia</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -187,6 +187,7 @@
     <string name="amount_remaining">Amount Remaining:</string>
     <string name="date">Date</string>
     <string name="myHistory">My History</string>
+    <string name="History">History</string>
 
     <string name="want_more">Want More</string>
     <string name="treatz_from_us">Treatz From Us</string>
@@ -272,6 +273,8 @@
     <string name="enter_credits_to_cashout">Enter Credits To Purchase</string>
     <string name="credit_history">Credit History</string>
     <string name="point_history">Point History</string>
+    <string name="spent_history">Spent History</string>
+    <string name="earned_history">Earned History</string>
     <string name="enter_points_to_purchase">Enter credits to purchase</string>
     <string name="promo">Promo Code</string>
     <string name="add_to_wallet">Add to Wallet</string>
@@ -323,5 +326,18 @@
     <string name="done">Done</string>
     <string name="tier_2">Tier 2</string>
     <string name="tier_1">Tier 1</string>
+    <string name="no_history_is_currently_avaliable">No history is currently avaliable</string>
+    <string name="price">Price</string>
+    <string name="get_a_promo">Get Promo Code</string>
+    <string name="total_merchants">Total Merchants</string>
+    <string name="no_flashsale_is_currently_avaliable">No flashsale is currently avaliable.</string>
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="website_optional">Website (Optional)</string>
+    <string name="additional_comments">Additional Comments</string>
+    <string name="refer_restaurant">Refer a Restaurant</string>
+    <string name="enter_restaurant_name">Please enter restaurant name</string>
+    <string name="enter_comment">Enter Additional Comments</string>
+    <string name="you_have_successfully">You have successfully referred</string>
+    <string name="main_demo_list_title">Demos</string>
 
 </resources>

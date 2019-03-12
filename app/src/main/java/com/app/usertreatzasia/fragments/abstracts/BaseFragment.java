@@ -336,4 +336,16 @@ public abstract class BaseFragment extends Fragment implements webServiceRespons
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    protected void setEditTextFocus(EditText textFocus) {
+        InputMethodManager imm = (InputMethodManager) getDockActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null)
+            imm.showSoftInput(textFocus, InputMethodManager.SHOW_IMPLICIT);
+    }
+    public String getResString(int id){
+        return getDockActivity().getResources().getString(id);
+    }
+
+
+
+
 }

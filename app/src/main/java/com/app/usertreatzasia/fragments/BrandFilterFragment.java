@@ -1,6 +1,7 @@
 package com.app.usertreatzasia.fragments;
 
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,8 +24,9 @@ import com.app.usertreatzasia.ui.adapters.FastScrollAdapter;
 import com.app.usertreatzasia.ui.views.AnyEditTextView;
 import com.app.usertreatzasia.ui.views.AnyTextView;
 import com.app.usertreatzasia.ui.views.TitleBar;
-
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -150,8 +152,11 @@ public class BrandFilterFragment extends BaseFragment implements HeaderNameInter
     }
 
     protected void initialiseUI() {
+        FastScrollAdapter fastScrollAdapter=new FastScrollAdapter(mDataArray, getDockActivity(),this,this);
+
         fastScrollerRecycler.setLayoutManager(new LinearLayoutManager(getDockActivity()));
-        fastScrollerRecycler.setAdapter(new FastScrollAdapter(mDataArray, getDockActivity(),this,this));
+        fastScrollerRecycler.setAdapter(fastScrollAdapter);
+
 
         fastScrollerRecycler.setIndexTextSize(12);
         fastScrollerRecycler.setIndexBarColor("#000000");
@@ -236,6 +241,12 @@ public class BrandFilterFragment extends BaseFragment implements HeaderNameInter
             case WebServiceConstants.getMerchants:
                 mDataArray = new ArrayList<>();
                 totalMerchants = (ArrayList<GetMerchantsEnt>) result;
+                Collections.sort(totalMerchants, new Comparator<GetMerchantsEnt>() {
+                    @Override
+                    public int compare(GetMerchantsEnt getMerchantsEnt, GetMerchantsEnt t1) {
+                        return getMerchantsEnt.getFirstName().toLowerCase().trim().compareTo(t1.getFirstName().toLowerCase().trim());
+                    }
+                });
                 if (totalMerchants.size()>0) {
                     tv_points_available.setText(totalMerchants.size() + "");
                 } else {

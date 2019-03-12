@@ -25,6 +25,8 @@ import com.app.usertreatzasia.ui.views.AnyTextView;
 import com.app.usertreatzasia.ui.views.TitleBar;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -191,7 +193,7 @@ public class GiftRecipientsFragment extends BaseFragment implements HeaderNameIn
                     UserName = item.getName();
                 }
                 if (Pattern.compile(Pattern.quote(keyword), Pattern.CASE_INSENSITIVE).matcher(UserName).find()) {
-            /*UserName.contains(keyword)*/
+                    /*UserName.contains(keyword)*/
                     arrayList.add(new FilterArrayEnt(item.getName(), item.getId()));
 
                 }
@@ -245,8 +247,17 @@ public class GiftRecipientsFragment extends BaseFragment implements HeaderNameIn
             case WebServiceConstants.getGiftUsers:
                 mDataArray = new ArrayList<>();
                 totalMerchants = (ArrayList<GetUsersEnt>) result;
+                Collections.sort(totalMerchants, new Comparator<GetUsersEnt>() {
+                    @Override
+                    public int compare(GetUsersEnt getMerchantsEnt, GetUsersEnt t1) {
+                        if (getMerchantsEnt.getFirstName() != null && t1.getFirstName() != null) {
+                            return getMerchantsEnt.getFirstName().toLowerCase().trim().compareTo(t1.getFirstName().toLowerCase().trim());
+                        }
+                        return 1;
+                    }
+                });
                 for (GetUsersEnt item : totalMerchants) {
-                    if (!item.getFirstName().equals(""))
+                    if (item.getFirstName()!=null && !item.getFirstName().equals(""))
                         mDataArray.add(new FilterArrayEnt(item.getFirstName(), item.getId()));
                 }
                 initialiseData();
@@ -261,18 +272,22 @@ public class GiftRecipientsFragment extends BaseFragment implements HeaderNameIn
 
         if (getIsVoucherWalletFragment != null) {
             if (getIsVoucherWalletFragment.equalsIgnoreCase("ImComingFromEvoucherWallet")) {
+                getDockActivity().popFragment();
                 getDockActivity().replaceDockableFragment(HomeWalletFragment.newInstance(mDataArray.get(position).getId(), mDataArray.get(position).getName()), "CouponWaletDetailFragment");
             }
         } else if (getIsVoucherGiftRecievedFragment != null) {
             if (getIsVoucherGiftRecievedFragment.equalsIgnoreCase("ImComingFromEvoucherWallet")) {
+                getDockActivity().popFragment();
                 getDockActivity().replaceDockableFragment(HomeWalletFragment.newInstance(mDataArray.get(position).getId(), mDataArray.get(position).getName()), "HomeWalletFragment");
             }
         } else if (getIsEventFragment != null) {
             if (getIsEventFragment.equalsIgnoreCase("ImComingFromEventWallet")) {
+                getDockActivity().popFragment();
                 getDockActivity().replaceDockableFragment(EventsWalletFragment.newInstance(mDataArray.get(position).getId(), mDataArray.get(position).getName()), "EventsWalletFragment");
             }
         } else if (getIsEventGiftRecievedFragment != null) {
             if (getIsEventGiftRecievedFragment.equalsIgnoreCase("ImComingFromEventGiftRecieved")) {
+                getDockActivity().popFragment();
                 getDockActivity().replaceDockableFragment(EventsWalletFragment.newInstance(mDataArray.get(position).getId(), mDataArray.get(position).getName()), "EventsWalletFragment");
             }
         } else {

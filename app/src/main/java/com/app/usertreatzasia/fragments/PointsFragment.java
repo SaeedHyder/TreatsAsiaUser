@@ -98,7 +98,7 @@ public class PointsFragment extends BaseFragment {
             case R.id.btn_top_up_points:
                 break;
             case R.id.btn_view_history:
-                getDockActivity().replaceDockableFragment(PointHistoryFragment.newInstance(), "PointHistoryFragment");
+                getDockActivity().replaceDockableFragment(PointHistoryFragment.newInstance(""), "PointHistoryFragment");
                 break;
         }
     }

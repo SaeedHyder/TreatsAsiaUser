@@ -75,6 +75,7 @@ public class VoucherAndGiftWalletFragment extends BaseFragment implements View.O
         titleBar.showBackButtonAsPerRequirement(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getDockActivity().popFragment();
                 getDockActivity().replaceDockableFragment(WalletFragment.newInstance(), "WalletFragment");
             }
         });

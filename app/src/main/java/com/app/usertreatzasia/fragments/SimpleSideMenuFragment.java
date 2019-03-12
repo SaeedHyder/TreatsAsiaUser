@@ -41,6 +41,8 @@ public class SimpleSideMenuFragment extends BaseFragment {
     LinearLayout llLanguage;
     @BindView(R.id.ll_about_app)
     LinearLayout llAboutApp;
+    @BindView(R.id.ll_referRresaurant)
+    LinearLayout ll_referRresaurant;
     @BindView(R.id.ll_settings)
     LinearLayout llSettings;
     Unbinder unbinder;
@@ -60,6 +62,9 @@ public class SimpleSideMenuFragment extends BaseFragment {
     AnyTextView tvAboutApp;
     @BindView(R.id.tv_setttings)
     AnyTextView tvSetttings;
+    @BindView(R.id.tv_ReferRestaurant)
+    AnyTextView tvReferRestaurant;
+
 
     public static SimpleSideMenuFragment newInstance() {
         return new SimpleSideMenuFragment();
@@ -93,7 +98,9 @@ public class SimpleSideMenuFragment extends BaseFragment {
                 tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
             } else if (prefHelper.getSideMenuName().equalsIgnoreCase(AppConstants.NOTIFICATIONS)) {
                 tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
-            } else if (prefHelper.getSideMenuName().equalsIgnoreCase(AppConstants.LANGUAGE)) {
+            } else if (prefHelper.getSideMenuName().equalsIgnoreCase(AppConstants.REFERRESTAURANT)) {
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
+            }else if (prefHelper.getSideMenuName().equalsIgnoreCase(AppConstants.LANGUAGE)) {
                 tvHome.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
             } else if (prefHelper.getSideMenuName().equalsIgnoreCase(AppConstants.ABOUT_APP)) {
                 tvAboutApp.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
@@ -169,6 +176,8 @@ public class SimpleSideMenuFragment extends BaseFragment {
                 tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
             } else if (prefHelper.getSideMenuName().equalsIgnoreCase(AppConstants.NOTIFICATIONS)) {
                 tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
+            }else if (prefHelper.getSideMenuName().equalsIgnoreCase(AppConstants.REFERRESTAURANT)) {
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
             } else if (prefHelper.getSideMenuName().equalsIgnoreCase(AppConstants.LANGUAGE)) {
                 tvHome.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
             } else if (prefHelper.getSideMenuName().equalsIgnoreCase(AppConstants.ABOUT_APP)) {
@@ -187,7 +196,7 @@ public class SimpleSideMenuFragment extends BaseFragment {
         getMainActivity().closemenu();
     }
 
-    @OnClick({R.id.ll_home, R.id.ll_profile, R.id.ll_wallet, R.id.ll_history, R.id.ll_notofications, R.id.ll_language, R.id.ll_about_app, R.id.ll_settings})
+    @OnClick({R.id.ll_home, R.id.ll_profile, R.id.ll_wallet, R.id.ll_history, R.id.ll_notofications, R.id.ll_language, R.id.ll_about_app, R.id.ll_settings, R.id.ll_referRresaurant})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_home:
@@ -196,6 +205,7 @@ public class SimpleSideMenuFragment extends BaseFragment {
                 tvWallet.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvLanguage.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvAboutApp.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvSetttings.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
@@ -209,6 +219,7 @@ public class SimpleSideMenuFragment extends BaseFragment {
                 tvWallet.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvLanguage.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvAboutApp.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvSetttings.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
@@ -222,6 +233,7 @@ public class SimpleSideMenuFragment extends BaseFragment {
                 tvWallet.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
                 tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvLanguage.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvAboutApp.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvSetttings.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
@@ -235,6 +247,7 @@ public class SimpleSideMenuFragment extends BaseFragment {
                 tvWallet.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
                 tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvLanguage.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvAboutApp.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvSetttings.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
@@ -248,6 +261,7 @@ public class SimpleSideMenuFragment extends BaseFragment {
                 tvWallet.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvLanguage.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvAboutApp.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvSetttings.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
@@ -256,12 +270,28 @@ public class SimpleSideMenuFragment extends BaseFragment {
                 getDockActivity().replaceDockableFragment(NotificationsFragment.newInstance(), NotificationsFragment.class.getName());
                 txtBadgeNotifications.setVisibility(View.GONE);
                 break;
+
+            case R.id.ll_referRresaurant:
+                tvHome.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvProfile.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvWallet.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
+                tvLanguage.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvAboutApp.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvSetttings.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                prefHelper.putSideMenuName(AppConstants.LANGUAGE);
+                closeMenu();
+                getDockActivity().replaceDockableFragment(ReferResturantFragment.newInstance(), ReferResturantFragment.class.getName());
+                break;
             case R.id.ll_language:
                 tvHome.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvProfile.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvWallet.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvLanguage.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
                 tvAboutApp.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvSetttings.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
@@ -275,6 +305,7 @@ public class SimpleSideMenuFragment extends BaseFragment {
                 tvWallet.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvLanguage.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvAboutApp.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));
                 tvSetttings.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
@@ -288,6 +319,7 @@ public class SimpleSideMenuFragment extends BaseFragment {
                 tvWallet.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvHistory.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvNotification.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
+                tvReferRestaurant.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvLanguage.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvAboutApp.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.white));
                 tvSetttings.setTextColor(ContextCompat.getColor(getDockActivity(), R.color.golden));

@@ -212,8 +212,8 @@
 
             <ImageView
                 android:id="@+id/img_barcode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/x100"
                 android:layout_gravity="center"
                 android:scaleType="fitXY"
                 android:src="@drawable/code" />

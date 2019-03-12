@@ -83,7 +83,7 @@ public class EventTicket extends BaseFragment {
 
     private void setData() {
 
-        txtTicketId.setText("#" + purchaseEnt.getEventDetail().getId() + " ");
+        txtTicketId.setText("#" + purchaseEnt.getId() + " ");
         txtEvent.setText(purchaseEnt.getEventDetail().getEventName() + "");
         //txtAmountPaid.setText("$"+purchaseEnt.getEventDetail().getAmount() + "");
 

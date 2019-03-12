@@ -187,7 +187,14 @@ public class EventsItemBinder extends ViewBinder<EventsEnt> {
 
             viewHolder.llFree.setVisibility(View.GONE);
         }
-        updatedCash = Float.valueOf(entity.getPoint()) * prefHelper.getConvertedAmount();
+        if (entity.getPoint() != null && !entity.getPoint().equals("") && !entity.getPoint().isEmpty()) {
+            try {
+                updatedCash = Float.valueOf(entity.getPoint()) * prefHelper.getConvertedAmount();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         String formattedValue = String.format("%.2f", updatedCash);
         viewHolder.txtCash.setText(formattedValue + "");
         viewHolder.currencyTypeCash.setText(prefHelper.getConvertedAmountCurrrency());

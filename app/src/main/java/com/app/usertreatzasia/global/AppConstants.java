@@ -68,6 +68,7 @@ public class AppConstants {
     public static final String WALLET = "WALLET";
     public static final String HISTORY = "HISTORY";
     public static final String NOTIFICATIONS = "NOTIFICATIONS";
+    public static final String REFERRESTAURANT = "REFERRESTAURANT";
     public static final String LANGUAGE = "LANGUAGE";
     public static final String ABOUT_APP = "ABOUT_APP";
     public static final String SETTINGS = "SETTINGS";
@@ -79,4 +80,7 @@ public class AppConstants {
 
     public static final String TIER1 = "tier1";
     public static final String TIER2 = "tier2";
+
+    public static final String Spend = "Spend";
+    public static final String Earned = "Earned";
 }

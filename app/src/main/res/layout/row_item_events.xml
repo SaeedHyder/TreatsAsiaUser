@@ -7,10 +7,19 @@
     android:onClick="onClick"
     android:orientation="vertical">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/x10"
+        android:layout_marginEnd="@dimen/x10"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginTop="@dimen/x3"
+        app:cardCornerRadius="@dimen/x3"
+        app:cardElevation="@dimen/x5">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/x10"
         android:background="@drawable/bg_rounded_white"
         android:orientation="vertical">
 
@@ -62,28 +71,27 @@
                 android:id="@+id/txt_EventTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.4"
-                android:alpha="0.4"
+                android:layout_weight="1"
+                android:alpha="0.6"
                 android:gravity="center_vertical|top"
-                tools:text="Event Title Here"
+                tools:text="Event"
                 android:textColor="@color/black"
                 android:textSize="@dimen/x16"
                 app:typeface="Roboto-Regular.ttf" />
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/x10"
-                android:layout_weight="0.4"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/ll_points"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:gravity="start"
+                    android:gravity="start|center_vertical"
                     android:layout_marginRight="@dimen/x2"
                     android:layout_marginLeft="@dimen/x2"
                     android:visibility="gone">
@@ -93,7 +101,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="right"
-                        android:alpha="0.8"
                         android:gravity="center"
                         tools:text="50"
                         android:textColor="@color/appGolden"
@@ -104,7 +111,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/x5"
-                        android:alpha="0.8"
                         android:text="Points"
                         android:gravity="center"
                         android:textColor="@color/appGolden"
@@ -116,9 +122,9 @@
                 <LinearLayout
                     android:id="@+id/ll_credits"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:gravity="start"
+                    android:gravity="start|center_vertical"
                     android:layout_marginRight="@dimen/x2"
                     android:layout_marginLeft="@dimen/x2"
                     android:visibility="gone">
@@ -151,9 +157,9 @@
                 <LinearLayout
                     android:id="@+id/ll_cash"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:gravity="start"
+                    android:gravity="start|center_vertical"
                     android:layout_marginRight="@dimen/x2"
                     android:layout_marginLeft="@dimen/x2"
                     android:visibility="gone">
@@ -189,9 +195,9 @@
                 <LinearLayout
                     android:id="@+id/ll_free"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:gravity="start"
+                    android:gravity="start|center_vertical"
                     android:layout_marginRight="@dimen/x2"
                     android:layout_marginLeft="@dimen/x2"
                     android:visibility="gone">
@@ -210,17 +216,22 @@
 
             </LinearLayout>
 
+            <FrameLayout
+                android:layout_width="@dimen/x25"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                >
+
             <CheckBox
                 android:id="@+id/iv_favorite"
-                android:layout_width="@dimen/x20"
-                android:layout_height="match_parent"
-                android:gravity="top"
-                android:layout_gravity="top"
-                android:layout_marginLeft="@dimen/x5"
-                android:layout_marginRight="@dimen/x10"
-                android:layout_marginTop="@dimen/x5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:button="@drawable/checkbox_favourite"
                 android:checked="false" />
+
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -328,5 +339,7 @@
             android:text="View Details"
             android:textColor="@color/white" />
     </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

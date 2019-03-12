@@ -21,6 +21,8 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="colorAccent">@color/gold_color</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorPrimary">@color/black</item>
 
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
 

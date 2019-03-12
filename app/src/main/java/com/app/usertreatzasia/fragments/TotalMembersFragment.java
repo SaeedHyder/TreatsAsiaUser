@@ -66,14 +66,14 @@ public class TotalMembersFragment extends BaseFragment {
             case WebServiceConstants.getTierAmount:
                 EntityTierAmount entity = (EntityTierAmount) result;
 
-                tvTier1.setText(prefHelper.getConvertedAmountCurrrency() + " " + entity.getTier_one_total() + "");
-                tvTier2.setText(prefHelper.getConvertedAmountCurrrency() + " " + entity.getTier_two_total() + "");
+                tvTier1.setText( Math.round(entity.getTier_one_total()) + " Points(s)");
+                tvTier2.setText( Math.round(entity.getTier_two_total())+ " Points(s)");
 
                 if (tvTier1.getText().toString().equalsIgnoreCase(prefHelper.getConvertedAmountCurrrency() + " ")){
-                    tvTier1.setText(prefHelper.getConvertedAmountCurrrency() + " 0");
+                    tvTier1.setText( " 0 Points(s)");
                 }
                 if (tvTier2.getText().toString().equalsIgnoreCase(prefHelper.getConvertedAmountCurrrency() + " ")){
-                    tvTier2.setText(prefHelper.getConvertedAmountCurrrency() + " 0");
+                    tvTier2.setText(" 0 Points(s)");
                 }
                 break;
         }
@@ -84,7 +84,7 @@ public class TotalMembersFragment extends BaseFragment {
         super.setTitleBar(titleBar);
         titleBar.hideButtons();
         titleBar.showBackButton();
-        titleBar.setSubHeading("Total Members");
+        titleBar.setSubHeading(getString(R.string.total_members));
     }
 
     @Override

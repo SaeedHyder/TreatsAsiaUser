@@ -16,15 +16,15 @@
         android:gravity="center_vertical"
         android:hint="@string/default_hint_text"
         android:imeOptions="actionDone"
-        android:maxLines="5"
         android:maxLength="99"
+        android:maxLines="5"
         android:singleLine="false"
         android:text=""
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="@dimen/x16"
-        app:typeface="Roboto-Regular.ttf"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:typeface="Roboto-Regular.ttf" />
 
     <com.app.usertreatzasia.ui.views.AnyTextView
         android:id="@+id/txt_homeHeading"
@@ -52,17 +52,25 @@
         android:id="@+id/lv_home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/x10"
-        android:layout_marginRight="@dimen/x10"
-        android:layout_marginTop="@dimen/x10"
         android:layout_weight="0.9"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/x10"
+        android:paddingTop="@dimen/x10"
+        android:divider="@color/transparent"
         android:scrollbars="none"
         android:visibility="visible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:alpha="0.4"
+        android:background="@color/grey"/>
 
     <LinearLayout
         android:id="@+id/ll_sticky"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x60"
+        android:layout_height="@dimen/x50"
+        android:elevation="@dimen/x3"
         android:background="@color/white"
         android:orientation="horizontal">
 

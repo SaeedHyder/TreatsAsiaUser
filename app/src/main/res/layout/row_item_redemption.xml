@@ -6,11 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x3"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginEnd="@dimen/x10"
+        android:layout_marginBottom="@dimen/x10"
+        app:cardCornerRadius="@dimen/x3"
+        app:cardElevation="@dimen/x5">
+
     <LinearLayout
         android:id="@+id/ll_main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       android:layout_marginTop="@dimen/x10"
         android:background="@drawable/bg_rounded_white"
         android:orientation="vertical">
 
@@ -157,5 +166,7 @@
             android:alpha="0.1"/>-->
 
     </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

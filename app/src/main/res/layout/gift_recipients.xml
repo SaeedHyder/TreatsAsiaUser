@@ -40,6 +40,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/golden_straight"
         android:layout_marginLeft="@dimen/x5"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <com.app.usertreatzasia.ui.views.AnyTextView

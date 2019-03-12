@@ -1,6 +1,9 @@
 package com.app.usertreatzasia.activities;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -34,6 +37,10 @@ import com.app.usertreatzasia.retrofit.WebService;
 import com.app.usertreatzasia.retrofit.WebServiceFactory;
 import com.app.usertreatzasia.ui.views.TitleBar;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
@@ -51,15 +58,21 @@ public class MainActivity extends DockActivity implements OnClickListener {
     FrameLayout mainFrameLayout;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
     private MainActivity mContext;
     private boolean loading;
     protected WebService withoutHeaderWebService;
     private ResideMenu resideMenu;
 
+
+
     private float lastTranslate = 0.0f;
 
     private String sideMenuType;
     private String sideMenuDirection;
+    private String address = "";
+    private String country = "";
 
     public View getDrawerView() {
         return getLayoutInflater().inflate(getSideMenuFrameLayoutId(), null);
@@ -83,10 +96,8 @@ public class MainActivity extends DockActivity implements OnClickListener {
 
 
             simpleSideMenuFragment = SimpleSideMenuFragment.newInstance();
-            FragmentTransaction transaction = getSupportFragmentManager()
-                    .beginTransaction();
-            transaction.replace(getSideMenuFrameLayoutId(), sideMenuFragment).commit();
-
+           /* FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(getSideMenuFrameLayoutId(), sideMenuFragment).commit();*/
             drawerLayout.closeDrawers();
         } else {
             resideMenu = new ResideMenu(this);
@@ -195,6 +206,9 @@ public class MainActivity extends DockActivity implements OnClickListener {
         sideMenuType = SideMenuChooser.RESIDE_MENU.getValue();
         sideMenuDirection = SideMenuDirection.LEFT.getValue();
 
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+
         settingSideMenu(sideMenuType, sideMenuDirection);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         titleBar.setMenuButtonListener(new OnClickListener() {
@@ -245,10 +259,11 @@ public class MainActivity extends DockActivity implements OnClickListener {
 
     public void refreshSideMenu() {
 
-        sideMenuFragment = SideMenuFragment.newInstance();
-        FragmentTransaction transaction = getSupportFragmentManager()
+   /*     sideMenuFragment = SideMenuFragment.newInstance();
+        setMenuItemDirection(sideMenuDirection);*/
+       /* FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction();
-        transaction.remove(sideMenuFragment).commit();
+        transaction.remove(sideMenuFragment).commit();*/
 
       /*  resideMenu = new ResideMenu(this);
         resideMenu.attachToActivity(this);
@@ -256,7 +271,7 @@ public class MainActivity extends DockActivity implements OnClickListener {
         resideMenu.setScaleValue(0.52f);
         resideMenu.setPadding(0,0,0,0);
 */
-        setMenuItemDirection(sideMenuDirection);
+
     }
 
 
@@ -364,6 +379,34 @@ public class MainActivity extends DockActivity implements OnClickListener {
                 }
             });
         }
+    }
+
+
+    public String getCurrentAddress(double lat, double lng) {
+        try {
+
+
+            Geocoder geocoder;
+            List<Address> addresses;
+            geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+            addresses = geocoder.getFromLocation(lat, lng, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            if (addresses.size() > 0) {
+                address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+            }
+// String city = addresses.get(0).getLocality();
+// String state = addresses.get(0).getAdminArea();
+            if (addresses.size() > 0) {
+                country = addresses.get(0).getCountryName();
+            }
+// String postalCode = addresses.get(0).getPostalCode();
+// String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+            return address + ", " + country;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 }

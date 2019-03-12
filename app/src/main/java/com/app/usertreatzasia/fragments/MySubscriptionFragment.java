@@ -99,7 +99,7 @@ public class MySubscriptionFragment extends BaseFragment {
     public void setTitleBar(TitleBar titleBar) {
         super.setTitleBar(titleBar);
         titleBar.hideButtons();
-        titleBar.showMenuButton();
+        titleBar.showBackButton();
         titleBar.setSubHeading(getString(R.string.my_subscription));
     }
 

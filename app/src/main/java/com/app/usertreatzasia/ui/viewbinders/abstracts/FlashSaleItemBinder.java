@@ -62,8 +62,8 @@ public class FlashSaleItemBinder extends ViewBinder<FlashSaleEnt> {
 
         //prefHelper.putLikeCountFlash(entity);
 
-        viewHolder.txtActualAmount.setVisibility(View.GONE);
-        viewHolder.txtAfterDiscount.setVisibility(View.GONE);
+        /*viewHolder.txtActualAmount.setVisibility(View.GONE);
+        viewHolder.txtAfterDiscount.setVisibility(View.GONE);*/
 
         if (prefHelper.getSelectedLanguage().equals(AppConstants.ENGLISH)) {
             viewHolder.txtDiscountDetail.setText(entity.getTitle() + "");
@@ -74,54 +74,28 @@ public class FlashSaleItemBinder extends ViewBinder<FlashSaleEnt> {
         } else {
             viewHolder.txtDiscountDetail.setText(entity.getTitle() + "");
         }
-        /*if (prefHelper.getSelectedLanguage().equals(AppConstants.ENGLISH)) {
-            //   viewHolder.txtDiscountDetail.setText(Html.fromHtml(discount));
-            if ((entity.getTitle() + "").contains("%")) {
-                viewHolder.txtDiscountDetail.setText(UtilsGlobal.setSpanString(entity.getTitle(),
-                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getTitle() + ""),
-                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getTitle() + ""),
-                        dockActivity));
-            } else {
-                viewHolder.txtDiscountDetail.setText(entity.getTitle() + "");
-            }
 
-            // viewHolder.txtDiscountDetail.setText(entity.getType() + " " + Html.fromHtml(discount)+ " off on " + entity.getMerchantDetail().getFirstName() + " "+entity.getMerchantDetail().getLastName());
-        } else if (prefHelper.getSelectedLanguage().equals(AppConstants.INDONESIAN)) {
-            if ((entity.getInTitle() + "").contains("%")) {
-                viewHolder.txtDiscountDetail.setText(UtilsGlobal.setSpanString(entity.getInTitle(),
-                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getInTitle() + ""),
-                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getInTitle() + ""),
-                        dockActivity));
-            } else {
-                viewHolder.txtDiscountDetail.setText(entity.getInTitle() + "");
-            }
-        } else {
-            if ((entity.getMaTitle() + "").contains("%")) {
-                viewHolder.txtDiscountDetail.setText(UtilsGlobal.setSpanString(entity.getMaTitle(),
-                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getMaTitle() + ""),
-                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getMaTitle() + ""),
-                        dockActivity));
-            } else {
-                viewHolder.txtDiscountDetail.setText(entity.getMaTitle() + "");
-            }
-        }*/
+        updatedDiscountedPrice = Float.valueOf(UtilsGlobal.getRemainingAmountWithoutDollar(Integer.parseInt(entity.getAmount()), Integer.parseInt(entity.getProductDetail().getPrice()))) * prefHelper.getConvertedAmount();
+        String formattedValuePriceDiscounted = String.format("%.2f", updatedDiscountedPrice);
+
+        viewHolder.txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency()+" "+formattedValuePriceDiscounted);
+
 
         int discountAmount = (Integer.parseInt(entity.getProductDetail().getPrice()) / 100) * (Integer.parseInt(entity.getAmount()));
         int AfterDiscount = (Integer.parseInt(entity.getProductDetail().getPrice())) - discountAmount;
         imageLoader.displayImage(entity.getProductDetail().getProductImage(), viewHolder.offerImage);
-        viewHolder.txtActualAmount.setPaintFlags(viewHolder.txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        viewHolder.txtActualAmount.setText("$" + entity.getProductDetail().getPrice() + "");
-        viewHolder.txtAfterDiscount.setText("$" + AfterDiscount + "");
-        viewHolder.txtAfterDiscount.setText(UtilsGlobal.getRemainingAmount(Integer.parseInt(entity.getAmount()), Integer.parseInt(entity.getProductDetail().getPrice())));
+      //  viewHolder.txtActualAmount.setPaintFlags(viewHolder.txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+      //  viewHolder.txtActualAmount.setText("$" + entity.getProductDetail().getPrice() + "");
+        //viewHolder.txtAfterDiscount.setText("$" + AfterDiscount + "");
+        //viewHolder.txtAfterDiscount.setText(UtilsGlobal.getRemainingAmount(Integer.parseInt(entity.getAmount()), Integer.parseInt(entity.getProductDetail().getPrice())));
 
         updatedActualPrice = Float.valueOf(entity.getProductDetail().getPrice()) * prefHelper.getConvertedAmount();
         String formattedValuePrice = String.format("%.2f", updatedActualPrice);
-        viewHolder.txtActualAmount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePrice + "");
+       // viewHolder.txtActualAmount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePrice + "");
 
         //viewHolder.txtAfterDiscount.setText("$" + entity.getRewardPrice() + "");
-        updatedDiscountedPrice = Float.valueOf(UtilsGlobal.getRemainingAmountWithoutDollar(Integer.parseInt(entity.getAmount()), Integer.parseInt(entity.getProductDetail().getPrice()))) * prefHelper.getConvertedAmount();
-        String formattedValuePriceDiscounted = String.format("%.2f", updatedDiscountedPrice);
-        viewHolder.txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
+
+       // viewHolder.txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
 
         viewHolder.txtPaidFree.setText(UtilsGlobal.getVoucherType(entity.getType(), dockActivity));
         viewHolder.txtAddress.setText(entity.getLocation() + " ");
@@ -250,13 +224,48 @@ public class FlashSaleItemBinder extends ViewBinder<FlashSaleEnt> {
             viewHolder.currencyTypeCash.setText(prefHelper.getConvertedAmountCurrrency());
             viewHolder.llFree.setVisibility(View.GONE);
         }
-        updatedCash = Float.valueOf(entity.getPoint()) * prefHelper.getConvertedAmount();
+        try {
+            updatedCash = Float.valueOf(entity.getPoint()) * prefHelper.getConvertedAmount();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         String formattedValue = String.format("%.2f", updatedCash);
         viewHolder.txtCash.setText(formattedValue + "");
         viewHolder.currencyTypeCash.setText(prefHelper.getConvertedAmountCurrrency());
 
-        viewHolder.txtActualAmount.setVisibility(View.GONE);
-        viewHolder.txtAfterDiscount.setVisibility(View.GONE);
+
+         /*if (prefHelper.getSelectedLanguage().equals(AppConstants.ENGLISH)) {
+            //   viewHolder.txtDiscountDetail.setText(Html.fromHtml(discount));
+            if ((entity.getTitle() + "").contains("%")) {
+                viewHolder.txtDiscountDetail.setText(UtilsGlobal.setSpanString(entity.getTitle(),
+                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getTitle() + ""),
+                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getTitle() + ""),
+                        dockActivity));
+            } else {
+                viewHolder.txtDiscountDetail.setText(entity.getTitle() + "");
+            }
+
+            // viewHolder.txtDiscountDetail.setText(entity.getType() + " " + Html.fromHtml(discount)+ " off on " + entity.getMerchantDetail().getFirstName() + " "+entity.getMerchantDetail().getLastName());
+        } else if (prefHelper.getSelectedLanguage().equals(AppConstants.INDONESIAN)) {
+            if ((entity.getInTitle() + "").contains("%")) {
+                viewHolder.txtDiscountDetail.setText(UtilsGlobal.setSpanString(entity.getInTitle(),
+                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getInTitle() + ""),
+                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getInTitle() + ""),
+                        dockActivity));
+            } else {
+                viewHolder.txtDiscountDetail.setText(entity.getInTitle() + "");
+            }
+        } else {
+            if ((entity.getMaTitle() + "").contains("%")) {
+                viewHolder.txtDiscountDetail.setText(UtilsGlobal.setSpanString(entity.getMaTitle(),
+                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getMaTitle() + ""),
+                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getMaTitle() + ""),
+                        dockActivity));
+            } else {
+                viewHolder.txtDiscountDetail.setText(entity.getMaTitle() + "");
+            }
+        }*/
     }
 
     static class ViewHolder extends BaseViewHolder {

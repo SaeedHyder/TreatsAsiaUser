@@ -43,7 +43,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.9"
         android:gravity="center"
-        android:text="@string/no_data"
+        android:text="@string/no_flashsale_is_currently_avaliable"
         android:textColor="@color/dark_grey"
         android:layout_gravity="center"
         app:typeface="Roboto-Regular.ttf"
@@ -55,19 +55,28 @@
     <ListView
         android:id="@+id/lv_flashSale"
         android:layout_width="match_parent"
-        android:layout_marginLeft="@dimen/x10"
-        android:layout_marginRight="@dimen/x10"
-        android:layout_marginTop="@dimen/x10"
+        android:paddingTop="@dimen/x10"
+        android:paddingBottom="@dimen/x10"
+        android:clipToPadding="false"
         android:layout_height="0dp"
         android:layout_weight="0.9"
         android:scrollbars="none"
+        android:divider="@color/transparent"
         android:visibility="visible"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:alpha="0.4"
+        android:background="@color/grey"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x60"
+        android:layout_height="@dimen/x50"
         android:background="@color/white"
+        android:elevation="@dimen/x3"
         android:orientation="horizontal">
+
 
         <LinearLayout
             android:id="@+id/ll_flashSale"

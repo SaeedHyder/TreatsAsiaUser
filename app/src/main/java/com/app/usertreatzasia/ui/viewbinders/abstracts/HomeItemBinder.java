@@ -50,10 +50,7 @@ public class HomeItemBinder extends ViewBinder<EvoucherEnt> {
     public void bindView(final EvoucherEnt entity, int position, int grpPosition, View view, Activity activity) {
 
         final ViewHolder viewHolder = (ViewHolder) view.getTag();
-        viewHolder.txtActualAmount.setVisibility(View.GONE);
-        viewHolder.txtAfterDiscount.setVisibility(View.GONE);
         imageLoader = ImageLoader.getInstance();
-        //   String discount = UtilsGlobal.getVoucherType(entity.getType(),dockActivity) + " <b><font color='#000000'>" + entity.getAmount() + "% </font></b>"+" "+ activity.getString(R.string.off_on)+" "+ entity.getMerchantDetail().getFirstName() + " " ;
         if (prefHelper.getSelectedLanguage().equals(AppConstants.ENGLISH)) {
             viewHolder.txtDiscountDetail.setText(entity.getTitle() + "");
         } else if (prefHelper.getSelectedLanguage().equals(AppConstants.INDONESIAN)) {
@@ -62,59 +59,12 @@ public class HomeItemBinder extends ViewBinder<EvoucherEnt> {
             viewHolder.txtDiscountDetail.setText(entity.getMaTitle() + "");
         }
 
-/*        if (prefHelper.getSelectedLanguage().equals(AppConstants.ENGLISH)) {
-            //   viewHolder.txtDiscountDetail.setText(Html.fromHtml(discount));
-            if ((entity.getTitle() + "").contains("%")) {
-                viewHolder.txtDiscountDetail.setText(UtilsGlobal.setSpanString(entity.getTitle(),
-                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getTitle() + ""),
-                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getTitle() + ""),
-                        dockActivity));
-            } else {
-                viewHolder.txtDiscountDetail.setText(entity.getTitle() + "");
-            }
-
-            // viewHolder.txtDiscountDetail.setText(entity.getType() + " " + Html.fromHtml(discount)+ " off on " + entity.getMerchantDetail().getFirstName() + " "+entity.getMerchantDetail().getLastName());
-        } else if (prefHelper.getSelectedLanguage().equals(AppConstants.INDONESIAN)) {
-            if ((entity.getInTitle() + "").contains("%")) {
-                viewHolder.txtDiscountDetail.setText(UtilsGlobal.setSpanString(entity.getInTitle(),
-                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getInTitle() + ""),
-                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getInTitle() + ""),
-                        dockActivity));
-            } else {
-                viewHolder.txtDiscountDetail.setText(entity.getInTitle() + "");
-            }
-        } else {
-            if ((entity.getMaTitle() + "").contains("%")) {
-                viewHolder.txtDiscountDetail.setText(UtilsGlobal.setSpanString(entity.getMaTitle(),
-                        UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getMaTitle() + ""),
-                        UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), entity.getMaTitle() + ""),
-                        dockActivity));
-            } else {
-                viewHolder.txtDiscountDetail.setText(entity.getMaTitle() + "");
-            }
-        }*/
-
-
-        int discountAmount = (Integer.parseInt(entity.getProductDetail().getPrice()) / 100) * (Integer.parseInt(entity.getAmount()));
-        int AfterDiscount = (Integer.parseInt(entity.getProductDetail().getPrice())) - discountAmount;
-        imageLoader.displayImage(entity.getProductDetail().
-
-                getProductImage(), viewHolder.offerImage);
-        viewHolder.txtActualAmount.setPaintFlags(viewHolder.txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        viewHolder.txtActualAmount.setText("$" + entity.getProductDetail().getPrice() + "");
-        viewHolder.txtAfterDiscount.setText("$" + AfterDiscount + "");
-        viewHolder.txtAfterDiscount.setText(UtilsGlobal.getRemainingAmount(Integer.parseInt(entity.getAmount()), Integer.parseInt(entity.getProductDetail().getPrice())));
-        /*viewHolder.txtActualAmount.setPaintFlags(viewHolder.txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        viewHolder.txtActualAmount.setText("$" + entity.getProductDetail().getPrice() + "");
-        viewHolder.txtAfterDiscount.setText("$" + UtilsGlobal.getRemainingAmountForRedeemCoupon(Integer.parseInt(entity.getProductDetail().getPrice()), Integer.parseInt(entity.getAmount())));*/
-
-        updatedActualPrice = Float.valueOf(entity.getProductDetail().getPrice()) * prefHelper.getConvertedAmount();
-        String formattedValuePrice = String.format("%.2f", updatedActualPrice);
-        viewHolder.txtActualAmount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePrice + "");
-
         updatedDiscountedPrice = Float.valueOf(UtilsGlobal.getRemainingAmountWithoutDollar(Integer.parseInt(entity.getAmount()), Integer.parseInt(entity.getProductDetail().getPrice()))) * prefHelper.getConvertedAmount();
         String formattedValuePriceDiscounted = String.format("%.2f", updatedDiscountedPrice);
-        viewHolder.txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
+
+        viewHolder.txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency()+" "+formattedValuePriceDiscounted);
+
+        imageLoader.displayImage(entity.getProductDetail().getProductImage(), viewHolder.offerImage);
 
         viewHolder.txtPaidFree.setText(UtilsGlobal.getVoucherType(entity.getType(), dockActivity));
         viewHolder.txtAddress.setText(entity.getLocation() + "");
@@ -154,13 +104,11 @@ public class HomeItemBinder extends ViewBinder<EvoucherEnt> {
 
         if (entity.getTypeSelect().equals("promo_code")) {
             viewHolder.ll_promo_code.setVisibility(View.VISIBLE);
-            viewHolder.btnVoucher.setText("Get Promo Code");
+            viewHolder.btnVoucher.setText(R.string.get_a_promo);
         } else {
             viewHolder.ll_promo_code.setVisibility(View.GONE);
-            viewHolder.btnVoucher.setText("Get A Voucher");
+            viewHolder.btnVoucher.setText(R.string.get_a_voucher);
         }
-        viewHolder.txtActualAmount.setVisibility(View.INVISIBLE);
-        viewHolder.txtAfterDiscount.setVisibility(View.GONE);
     }
 
 
@@ -173,8 +121,6 @@ public class HomeItemBinder extends ViewBinder<EvoucherEnt> {
         AnyTextView txtDiscountDetail;
         @BindView(R.id.iv_favorite)
         CheckBox ivFavorite;
-        @BindView(R.id.txtActualAmount)
-        AnyTextView txtActualAmount;
         @BindView(R.id.txtAfterDiscount)
         AnyTextView txtAfterDiscount;
         @BindView(R.id.txtExpiresOn)

@@ -7,10 +7,20 @@
     android:onClick="onClick"
     android:orientation="vertical">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/x10"
+        android:layout_marginEnd="@dimen/x10"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginTop="@dimen/x3"
+        app:cardCornerRadius="@dimen/x3"
+        app:cardElevation="@dimen/x5">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/x10"
+
         android:background="@drawable/bg_rounded_white"
         android:orientation="vertical">
 
@@ -62,7 +72,7 @@
                 android:id="@+id/txt_EventTitle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.8"
+                android:layout_weight="1"
                 android:alpha="0.4"
                 android:gravity="center_vertical"
                 tools:text="Event Title Here"
@@ -125,7 +135,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x10"
+            android:layout_marginBottom="@dimen/x10">
 
 
             <LinearLayout
@@ -209,4 +221,5 @@
             android:text="View Details"
             android:textColor="@color/white" />
     </LinearLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>

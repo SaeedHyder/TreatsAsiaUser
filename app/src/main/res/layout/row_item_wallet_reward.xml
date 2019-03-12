@@ -6,146 +6,160 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/x10"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/x10"
-        android:background="@drawable/bg_rounded_white"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/iv_offerImage"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/x150"
-            android:scaleType="fitXY" />
-
-
-        <com.app.usertreatzasia.ui.views.AnyTextView
-            android:id="@+id/txtRewardTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x10"
-            android:layout_marginTop="@dimen/x5"
-            android:alpha="0.8"
-            android:gravity="center_vertical"
-            android:textColor="@color/black"
-            android:textSize="@dimen/x18"
-            app:typeface="Roboto-Regular.ttf"
-            tools:text="Sony Alpha a7 Digital Camera" />
+        android:layout_marginEnd="@dimen/x10"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginTop="@dimen/x3"
+        app:cardCornerRadius="@dimen/x3"
+        app:cardElevation="@dimen/x5">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x10"
-            android:layout_marginTop="@dimen/x3"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+
+
+            android:background="@drawable/bg_rounded_white"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_offerImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x150"
+                android:scaleType="fitXY" />
+
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/txtRewardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_marginTop="@dimen/x5"
+                android:alpha="0.8"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="@dimen/x18"
+                app:typeface="Roboto-Regular.ttf"
+                tools:text="Sony Alpha a7 Digital Camera" />
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_marginTop="@dimen/x3"
+                android:layout_marginBottom="@dimen/x3"
                 android:orientation="horizontal">
 
-                <com.app.usertreatzasia.ui.views.AnyTextView
-                    android:id="@+id/txtActualAmount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
-                    android:textSize="@dimen/x12"
-                    app:typeface="Roboto-Regular.ttf"
-                    tools:text="$602" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal">
 
-                <com.app.usertreatzasia.ui.views.AnyTextView
-                    android:id="@+id/txtAfterDiscount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/x10"
-                    android:alpha="0.8"
-                    android:gravity="left"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/x15"
-                    app:typeface="Roboto-Regular.ttf"
-                    tools:text="$482" />
-            </LinearLayout>
+                    <com.app.usertreatzasia.ui.views.AnyTextView
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginEnd="@dimen/x10"
-                android:layout_weight="0.5"
-                android:gravity="right"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/x12"
+                        app:typeface="Roboto-Regular.ttf"
+                        android:text="@string/price" />
 
-                <com.app.usertreatzasia.ui.views.AnyTextView
-                    android:id="@+id/txtPointsAmount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:id="@+id/txtAfterDiscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:alpha="0.8"
+                        android:gravity="left"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/x12"
+                        app:typeface="Roboto-Regular.ttf"
+                        tools:text="$482" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:alpha="0.8"
+                    android:layout_marginEnd="@dimen/x10"
+                    android:layout_weight="0.5"
                     android:gravity="right"
-                    android:textColor="@color/appGolden"
-                    android:textSize="@dimen/x15"
-                    app:typeface="Roboto-Regular.ttf"
-                    tools:text="50" />
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
-                <com.app.usertreatzasia.ui.views.AnyTextView
-                    android:id="@+id/txtPoints"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/x5"
-                    android:alpha="0.8"
-                    android:text="Points"
-                    android:textColor="@color/light_grey"
-                    android:textSize="@dimen/x15"
-                    app:typeface="Roboto-Regular.ttf" />
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:id="@+id/txtPointsAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:alpha="0.8"
+                        android:gravity="right"
+                        android:textColor="@color/appGolden"
+                        android:textSize="@dimen/x15"
+                        app:typeface="Roboto-Regular.ttf"
+                        tools:text="50" />
+
+                    <com.app.usertreatzasia.ui.views.AnyTextView
+                        android:id="@+id/txtPoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:alpha="0.8"
+                        android:text="Points"
+                        android:textColor="@color/light_grey"
+                        android:textSize="@dimen/x15"
+                        app:typeface="Roboto-Regular.ttf" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/tv_start_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/x5"
+                android:layout_marginLeft="@dimen/x10"
+                android:alpha="0.8"
+                android:textSize="@dimen/x10"
+                app:typeface="Roboto-Regular.ttf"
+                tools:text="15 Nov - 30 Dec" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x1"
+                android:layout_marginBottom="@dimen/x5"
+                android:alpha="0.1"
+                android:background="@color/light_grey" />
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/txtRewardDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_marginTop="@dimen/x4"
+                android:gravity="left"
+                android:textSize="@dimen/x12"
+                app:typeface="Roboto-Regular.ttf"
+                tools:text="@string/lorem_ipsum" />
+
+            <com.app.usertreatzasia.ui.views.AnyTextView
+                android:id="@+id/txtChances"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_marginBottom="@dimen/x10"
+                android:gravity="left"
+                android:textColor="@color/golden"
+                android:textSize="@dimen/x15"
+                app:typeface="Roboto-Regular.ttf"
+                tools:text="You have two chances" />
         </LinearLayout>
 
-        <com.app.usertreatzasia.ui.views.AnyTextView
-            android:id="@+id/tv_start_end_date"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/x10"
-            android:alpha="0.8"
-            android:textSize="@dimen/x10"
-            app:typeface="Roboto-Regular.ttf"
-            tools:text="15 Nov - 30 Dec"
-            android:layout_marginBottom="@dimen/x5"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/x1"
-            android:alpha="0.1"
-            android:background="@color/light_grey"
-            android:layout_marginBottom="@dimen/x5"/>
-
-        <com.app.usertreatzasia.ui.views.AnyTextView
-            android:id="@+id/txtRewardDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/x10"
-            android:layout_marginTop="@dimen/x4"
-            android:gravity="left"
-            android:textSize="@dimen/x12"
-            app:typeface="Roboto-Regular.ttf"
-            tools:text="@string/lorem_ipsum" />
-
-        <com.app.usertreatzasia.ui.views.AnyTextView
-            android:id="@+id/txtChances"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/x10"
-            android:gravity="left"
-            android:textColor="@color/golden"
-            android:textSize="@dimen/x15"
-            app:typeface="Roboto-Regular.ttf"
-            tools:text="You have two chances" />
-    </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

@@ -93,6 +93,7 @@ public class RedemptionFragment extends BaseFragment {
         userCollection = new ArrayList<>();
         if (result.size() <= 0) {
             txtNoData.setVisibility(View.VISIBLE);
+
             lvRedemtionHistory.setVisibility(View.GONE);
         } else {
             txtNoData.setVisibility(View.GONE);

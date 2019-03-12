@@ -357,9 +357,15 @@ public class EventDetailFragment extends BaseFragment implements View.OnClickLis
             txtCash.setText(entity.getPoint());
         }
 
-        updatedCash = Float.valueOf(entity.getPoint()) * prefHelper.getConvertedAmount();
+        try {
+            updatedCash = Float.valueOf(entity.getPoint()) * prefHelper.getConvertedAmount();
+
         String formattedValue = String.format("%.2f", updatedCash);
         txtCash.setText(formattedValue + "");
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         currencyTypeCash.setText(prefHelper.getConvertedAmountCurrrency());
 
         updatedPrice = Float.valueOf(entity.getAmount()) * prefHelper.getConvertedAmount();

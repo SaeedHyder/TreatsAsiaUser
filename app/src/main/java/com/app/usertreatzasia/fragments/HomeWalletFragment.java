@@ -275,6 +275,7 @@ public class HomeWalletFragment extends BaseFragment implements FavoriteStatus {
         titleBar.showBackButtonAsPerRequirement(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getDockActivity().popFragment();
                 getDockActivity().replaceDockableFragment(WalletFragment.newInstance(), "WalletFragment");
             }
         });
@@ -369,6 +370,7 @@ public class HomeWalletFragment extends BaseFragment implements FavoriteStatus {
                 //getDockActivity().replaceDockableFragment(HomeWalletFragment.newInstance(), "HomeWalletFragment");
                 break;
             case R.id.txt_Gifts:
+                getDockActivity().popFragment();
                 getDockActivity().replaceDockableFragment(GiftRecievedFragment.newInstance(), "GiftRecievedFragment");
                 break;
         }

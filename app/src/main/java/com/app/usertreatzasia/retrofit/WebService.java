@@ -442,6 +442,7 @@ public interface WebService {
 
     @GET("getUserPoint")
     Call<ResponseWrapper<ArrayList<PointHistoryEnt>>> getPointHistory(
+            @Query("point_type") String point_type,
             @Header("token") String token
     );
 
@@ -611,6 +612,15 @@ public interface WebService {
             @Query("tier") String tier,
             @Query("month") String month,
             @Query("year") String year,
+            @Header("token") String token
+    );
+
+    @FormUrlEncoded
+    @POST("usermerchantreferral")
+    Call<ResponseWrapper> referRestaurant(
+            @Field("merchant_name") String merchant_name,
+            @Field("merchant_url") String nonce,
+            @Field("message") String message,
             @Header("token") String token
     );
 }

@@ -6,10 +6,20 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/x10"
+        android:layout_marginEnd="@dimen/x10"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginTop="@dimen/x3"
+        app:cardCornerRadius="@dimen/x3"
+        app:cardElevation="@dimen/x5">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/x10"
+
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -52,27 +62,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x10"
-            android:layout_marginRight="@dimen/x10"
+            android:paddingStart="@dimen/x10"
             android:layout_marginTop="@dimen/x5"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <com.app.usertreatzasia.ui.views.AnyTextView
                 android:id="@+id/txtDiscountDetail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.8"
+                android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:textSize="@dimen/x18"
                 app:typeface="Roboto-Regular.ttf"
                 tools:text="Flat 20% off on Burger Kingsadsadsadasd" />
 
             <CheckBox
+
                 android:id="@+id/iv_favorite"
-                android:layout_width="@dimen/x30"
-                android:layout_height="@dimen/x30"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/x5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/x5"
                 android:button="@drawable/checkbox_favourite" />
 
         </LinearLayout>
@@ -94,11 +106,10 @@
                 android:orientation="horizontal">
 
                 <com.app.usertreatzasia.ui.views.AnyTextView
-                    android:id="@+id/txtActualAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="left"
-                    android:text="$602"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/price"
                     android:textSize="@dimen/x12"
                     app:typeface="Roboto-Regular.ttf" />
 
@@ -106,12 +117,11 @@
                     android:id="@+id/txtAfterDiscount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_marginLeft="@dimen/x5"
                     android:alpha="0.8"
                     android:gravity="left"
-                    android:text="$482"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/x15"
+                    android:textSize="@dimen/x12"
                     app:typeface="Roboto-Regular.ttf" />
             </LinearLayout>
 
@@ -206,9 +216,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/x5"
-            android:layout_marginEnd="@dimen/x10"
-            android:layout_marginStart="@dimen/x10"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_marginTop="@dimen/x10"
+            android:layout_marginEnd="@dimen/x5"
+            android:layout_marginStart="@dimen/x5"
             android:gravity="center">
 
 
@@ -221,26 +232,26 @@
 
 
                 <com.app.usertreatzasia.ui.views.AnyTextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/x5"
+                    android:layout_marginRight="@dimen/x3"
                     android:drawableLeft="@drawable/time"
                     android:drawablePadding="@dimen/x5"
                     android:gravity="start"
                     android:text=  "@string/expires_on"
-                    android:textSize="@dimen/x12"
+                    android:textSize="@dimen/x11"
                     app:typeface="Roboto-Regular.ttf"
-                    android:layout_weight="0.5"/>
+                   />
 
                 <com.app.usertreatzasia.ui.views.AnyTextView
                     android:id="@+id/txtExpiresOn"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="June 25 2017"
-                    android:textSize="@dimen/x12"
+                    android:textSize="@dimen/x11"
                     app:typeface="Roboto-Regular.ttf"
-                    android:layout_weight="0.5"/>
+                 />
 
             </LinearLayout>
 
@@ -268,7 +279,7 @@
                     android:drawableLeft="@drawable/address"
                     android:drawablePadding="@dimen/x5"
                     android:gravity="center"
-                    android:textSize="@dimen/x12"
+                    android:textSize="@dimen/x11"
                     app:typeface="Roboto-Regular.ttf"
                     tools:text="4100 Federal Blvd" />
 
@@ -286,5 +297,7 @@
 
 
     </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

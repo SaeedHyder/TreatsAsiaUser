@@ -57,6 +57,7 @@ public class SideMenuFragment extends BaseFragment implements SideMenuItemClickL
         menuCollections.add(getResources().getString(R.string.wallet));
         menuCollections.add(getResources().getString(R.string.history));
         menuCollections.add(getResources().getString(R.string.notifications));
+        menuCollections.add(getResources().getString(R.string.refer_restaurant));
         menuCollections.add(getResources().getString(R.string.language));
         menuCollections.add(getResources().getString(R.string.about_app));
         menuCollections.add(getResources().getString(R.string.settings));
@@ -98,6 +99,10 @@ public class SideMenuFragment extends BaseFragment implements SideMenuItemClickL
         } else if (title.equals(getResources().getString(R.string.notifications))) {
             closeMenu();
             getDockActivity().replaceDockableFragment(NotificationsFragment.newInstance(),NotificationsFragment.class.getName());
+
+        } else if (title.equals(getResources().getString(R.string.refer_restaurant))) {
+            closeMenu();
+            getDockActivity().replaceDockableFragment(ReferResturantFragment.newInstance(),ReferResturantFragment.class.getName());
 
         } else if (title.equals(getResources().getString(R.string.language))) {
             closeMenu();

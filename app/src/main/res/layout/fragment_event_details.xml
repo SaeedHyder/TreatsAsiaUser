@@ -97,7 +97,7 @@
                         android:gravity="center_vertical"
                         android:text="$482"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/x14"
+                        android:textSize="@dimen/x12"
                         app:typeface="Roboto-Regular.ttf" />
                 </LinearLayout>
 
@@ -453,8 +453,8 @@
 
             <ImageView
                 android:id="@+id/img_barcode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/x100"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/x20"
                 android:src="@drawable/code"

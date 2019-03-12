@@ -120,9 +120,16 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:alpha="0.4"
+        android:background="@color/grey"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x60"
+        android:layout_height="@dimen/x50"
+        android:elevation="@dimen/x3"
         android:background="@color/white"
         android:orientation="horizontal">
 

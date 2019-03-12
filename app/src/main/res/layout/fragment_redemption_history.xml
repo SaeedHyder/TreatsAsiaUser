@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/no_data"
+        android:text="@string/no_history_is_currently_avaliable"
         android:textColor="@color/dark_grey"
         android:layout_gravity="center"
         app:typeface="Roboto-Regular.ttf"
@@ -22,9 +22,11 @@
     <ListView
         android:id="@+id/lv_redemtionHistory"
         android:layout_width="match_parent"
-        android:layout_marginLeft="@dimen/x10"
-        android:layout_marginRight="@dimen/x10"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/x10"
+        android:paddingBottom="@dimen/x10"
+        android:divider="@color/transparent"
         android:scrollbars="none"
         android:visibility="visible"/>
 

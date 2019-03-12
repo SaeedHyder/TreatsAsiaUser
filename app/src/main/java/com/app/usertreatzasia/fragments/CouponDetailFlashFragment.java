@@ -42,8 +42,6 @@ public class CouponDetailFlashFragment extends BaseFragment {
     AnyTextView txtPaidType;
     @BindView(R.id.txt_couponDetail)
     AnyTextView txtCouponDetail;
-    @BindView(R.id.txtActualAmount)
-    AnyTextView txtActualAmount;
     @BindView(R.id.txtAfterDiscount)
     AnyTextView txtAfterDiscount;
     @BindView(R.id.txtPoints)
@@ -80,6 +78,9 @@ public class CouponDetailFlashFragment extends BaseFragment {
     Button btnRedeem;
     @BindView(R.id.txt_termsDetails)
     AnyTextView txtTermsDetails;
+    @BindView(R.id.ll_main_layout)
+    LinearLayout llMainLayout;
+
     private int ID;
     private String Type;
     private String goToHome;
@@ -135,14 +136,17 @@ public class CouponDetailFlashFragment extends BaseFragment {
 //        RedeemCouponFragment fragment;
         switch (Tag) {
             case WebServiceConstants.FlashSaleDetail:
+                llMainLayout.setVisibility(View.VISIBLE);
                 setDetailData((FlashSaleEnt) result);
                 global = (FlashSaleEnt) result;
                 break;
             case WebServiceConstants.BuyFlashSaleDetail:
+                llMainLayout.setVisibility(View.VISIBLE);
                 setDetailData((FlashSaleEnt) result);
                 global = (FlashSaleEnt) result;
                 break;
             case WebServiceConstants.BuyCoupon:
+
                 imgBarcode.setVisibility(View.VISIBLE);
                 btnRedeem.setVisibility(View.GONE);
                 //     Picasso.with(getDockActivity()).load(((RedeemEnt) result).getQr_code_url()).fit().into(imgBarcode);
@@ -153,6 +157,7 @@ public class CouponDetailFlashFragment extends BaseFragment {
                         RedeemCouponFragment.class.getSimpleName());*/
                 break;
             case WebServiceConstants.BuyFlashSale:
+                llMainLayout.setVisibility(View.VISIBLE);
                 imgBarcode.setVisibility(View.VISIBLE);
                 btnRedeem.setVisibility(View.GONE);
                 //Picasso.with(getDockActivity()).load(((RedeemEnt) result).getQr_code_url()).into(imgBarcode);
@@ -163,6 +168,7 @@ public class CouponDetailFlashFragment extends BaseFragment {
                         RedeemCouponFragment.class.getSimpleName());*/
                 break;
             case WebServiceConstants.BuyFlashSaleFree:
+                llMainLayout.setVisibility(View.VISIBLE);
                 UIHelper.showShortToastInCenter(getDockActivity(), "Flash Sale voucher added successfully.");
                 getDockActivity().popBackStackTillEntry(0);
                 getDockActivity().replaceDockableFragment(HomeWalletFragment.newInstance(), "HomeWalletFragment");
@@ -204,53 +210,46 @@ public class CouponDetailFlashFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_flashsale_coupon_detail, container, false);
         ButterKnife.bind(this, view);
-
+        llMainLayout.setVisibility(View.GONE);
         return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        txtActualAmount.setVisibility(View.GONE);
-        txtAfterDiscount.setVisibility(View.GONE);
+
         buttonChecker = false;
         if (prefHelper != null && prefHelper.getSignUpUser() != null && prefHelper.getSignUpUser().getToken() != null)
             serviceHelper.enqueueCall(webService.flashSaleDetail(ID + "", prefHelper.getSignUpUser().getToken()), WebServiceConstants.BuyFlashSaleDetail);
 
-        txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        //    txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         goToHome = "goToHome";
 
         SimpleDateFormat dateFormatYouWant = new SimpleDateFormat("yyyy-MM-dd");
         FormattedDate = dateFormatYouWant.format(new Date());
 
-        txtActualAmount.setVisibility(View.GONE);
-        txtAfterDiscount.setVisibility(View.GONE);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        txtActualAmount.setVisibility(View.GONE);
-        txtAfterDiscount.setVisibility(View.GONE);
         buttonChecker = false;
         if (prefHelper != null && prefHelper.getSignUpUser() != null && prefHelper.getSignUpUser().getToken() != null)
             serviceHelper.enqueueCall(webService.flashSaleDetail(ID + "", prefHelper.getSignUpUser().getToken()), WebServiceConstants.BuyFlashSaleDetail);
 
-        txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
         goToHome = "goToHome";
 
         SimpleDateFormat dateFormatYouWant = new SimpleDateFormat("yyyy-MM-dd");
         FormattedDate = dateFormatYouWant.format(new Date());
 
-        txtActualAmount.setVisibility(View.GONE);
-        txtAfterDiscount.setVisibility(View.GONE);
+
     }
 
     private void setDetailData(FlashSaleEnt result) {
 
         if (result != null) {
-            txtActualAmount.setVisibility(View.GONE);
-            txtAfterDiscount.setVisibility(View.GONE);
+
             if (result != null && result.getEvoucherLike() != null) {
                 if (result.getEvoucherLike() == 1) {
                     getTitleBar().getCheckbox().setChecked(true);
@@ -275,23 +274,14 @@ public class CouponDetailFlashFragment extends BaseFragment {
             if (result != null && result.getProductDetail() != null && result.getProductDetail().getPrice() != null && result.getAmount() != null) {
                 discountAmount = (Integer.parseInt(result.getProductDetail().getPrice()) / 100) * (Integer.parseInt(result.getAmount()));
                 AfterDiscount = (Integer.parseInt(result.getProductDetail().getPrice())) - discountAmount;
+
             }
-            txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            if (result.getProductDetail() != null && result.getProductDetail().getPrice() != null)
-                txtActualAmount.setText("$" + result.getProductDetail().getPrice() + "");
-            txtAfterDiscount.setText("$" + AfterDiscount + "");
-            if (result.getAmount() != null && result.getProductDetail() != null && result.getProductDetail().getPrice() != null)
-                txtAfterDiscount.setText(UtilsGlobal.getRemainingAmount(Integer.parseInt(result.getAmount()), Integer.parseInt(result.getProductDetail().getPrice())));
 
-            if (result.getProductDetail() != null && result.getProductDetail().getPrice() != null && prefHelper != null && prefHelper.getConvertedAmount() != null)
-                updatedActualPrice = Float.valueOf(result.getProductDetail().getPrice()) * prefHelper.getConvertedAmount();
-            String formattedValuePrice = String.format("%.2f", updatedActualPrice);
-            txtActualAmount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePrice + "");
-
-            if (result.getAmount() != null && result.getProductDetail() != null && result.getProductDetail().getPrice() != null && prefHelper != null && prefHelper.getConvertedAmount() != null)
+            if (result.getAmount() != null && result.getProductDetail() != null && result.getProductDetail().getPrice() != null && prefHelper != null && prefHelper.getConvertedAmount() != null) {
                 updatedDiscountedPrice = Float.valueOf(UtilsGlobal.getRemainingAmountWithoutDollar(Integer.parseInt(result.getAmount()), Integer.parseInt(result.getProductDetail().getPrice()))) * prefHelper.getConvertedAmount();
-            String formattedValuePriceDiscounted = String.format("%.2f", updatedDiscountedPrice);
-            txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
+                String formattedValuePriceDiscounted = String.format("%.2f", updatedDiscountedPrice);
+                txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
+            }
 
             if (result.getType() != null)
                 txtPaidType.setText(UtilsGlobal.getVoucherType(result.getType() + "", getDockActivity()));
@@ -300,13 +290,9 @@ public class CouponDetailFlashFragment extends BaseFragment {
                         result.getExpiryDate() + ""));
             if (result.getCount() != null)
                 txtRemainingQty.setText(getDockActivity().getString(R.string.remaining_qty) + " " + result.getCount()); //result.getCount());
-            //txtAfterDiscount.setText("$" + UtilsGlobal.getRemainingAmountForRedeemCoupon(Integer.parseInt(result.getProductDetail().getPrice()), Integer.parseInt(result.getAmount())));
-            if (result.getProductDetail() != null && result.getProductDetail().getProductImage() != null)
+             if (result.getProductDetail() != null && result.getProductDetail().getProductImage() != null)
                 ImageLoader.getInstance().displayImage(result.getProductDetail().getProductImage(), ivCouponImage);
-            //txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            //txtActualAmount.setText(getString(R.string.selected_current) + result.getProductDetail().getPrice() + "");
-        /*txtAfterDiscount.setText(getString(R.string.selected_current) + AfterDiscount + "");*/
-            if (result.getLocation() != null)
+           if (result.getLocation() != null)
                 txtAddress.setText(result.getLocation() + " ");
             txtTermsDetails.setText(Html.fromHtml(result.getTermCondition()));
             if (result.getType() != null) {
@@ -387,71 +373,6 @@ public class CouponDetailFlashFragment extends BaseFragment {
                     currencyTypeCash.setText(prefHelper.getConvertedAmountCurrrency());
                 }
             }
-/*
-        if (result.getTypeSelect().equals("isFree")) {
-            txtPointsAmount.setText(result.getPoint() + "");
-            txtPoints.setText("Points");
-        } else if (result.getTypeSelect().equals("isPoint")){
-            txtPointsAmount.setText(result.getPoint() + "");
-            txtPoints.setText("Points");
-        } else if (result.getTypeSelect().equals("isCredit")){
-            txtPointsAmount.setText(result.getPoint() + "");
-            txtPoints.setText("Credits");
-        } else if (result.getTypeSelect().equals("isCash")){
-            txtPointsAmount.setText(result.getPoint() + "");
-            txtPoints.setText("$");
-        }
-
-        //txtRemainingQty.setText("Remaining Qty" + result.getProductDetail().getQuantity());
-
-        switch (prefHelper.getSelectedLanguage()) {
-            case AppConstants.ENGLISH:
-                if ((result.getTitle() + "").contains("%")) {
-                    txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getTitle(),
-                            UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getTitle() + ""),
-                            UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getTitle() + ""),
-                            getDockActivity()));
-                } else
-                    txtCouponDetail.setText(result.getTitle() + "");
-
-                txtTermsDetails.setText(result.getTermCondition() + "");
-
-                break;
-            case AppConstants.MALAYSIAN:
-                if ((result.getMaTitle() + "").contains("%")) {
-                    txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getMaTitle(),
-                            UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getMaTitle() + ""),
-                            UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getMaTitle() + ""),
-                            getDockActivity()));
-                } else
-                    txtCouponDetail.setText(result.getMaTitle() + "");
-
-                txtTermsDetails.setText(result.getMaTermCondition() + "");
-                break;
-            case AppConstants.INDONESIAN:
-                if ((result.getInTitle() + "").contains("%")) {
-                    txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getInTitle(),
-                            UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getInTitle() + ""),
-                            UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getInTitle() + ""),
-                            getDockActivity()));
-                } else
-                    txtCouponDetail.setText(result.getInTitle() + "");
-
-                txtTermsDetails.setText(result.getInTermCondition() + "");
-                break;
-            default:
-                if ((result.getTitle() + "").contains("%")) {
-                    txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getTitle(),
-                            UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getTitle() + ""),
-                            UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getTitle() + ""),
-                            getDockActivity()));
-                } else
-                    txtCouponDetail.setText(result.getTitle() + "");
-
-
-
-                break;
-        }*/
 
             if (result.getPoint() != null)
                 updatedCash = Float.valueOf(result.getPoint()) * prefHelper.getConvertedAmount();
@@ -460,8 +381,7 @@ public class CouponDetailFlashFragment extends BaseFragment {
             if (prefHelper != null && prefHelper.getConvertedAmountCurrrency() != null)
                 currencyTypeCash.setText(prefHelper.getConvertedAmountCurrrency());
 
-            txtActualAmount.setVisibility(View.GONE);
-            txtAfterDiscount.setVisibility(View.GONE);
+
         }
         buttonChecker = true;
     }

@@ -1,7 +1,11 @@
 package com.app.usertreatzasia.fragments;
 
 
+import android.Manifest;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.Html;
@@ -31,15 +35,30 @@ import com.app.usertreatzasia.ui.dialogs.DialogFactory;
 import com.app.usertreatzasia.ui.viewbinders.abstracts.HomeItemBinder;
 import com.app.usertreatzasia.ui.views.AnyTextView;
 import com.app.usertreatzasia.ui.views.TitleBar;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.model.LatLng;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.DexterError;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.PermissionRequestErrorListener;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
 
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener, FavoriteStatus, IGetLocation {
@@ -110,6 +129,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private String merchantid = "";
     private String search = "";
     String searchText;
+    private int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -346,7 +366,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 getDockActivity().replaceDockableFragment(BrandFilterFragment.newInstance(true), BrandFilterFragment.class.getName());
             }
         });
-        titleBar.setSubHeading(getString(R.string.Home));
+        titleBar.setSubHeading(getString(R.string.e_voucher));
 
         titleBar.crossBtnClick(new View.OnClickListener() {
             @Override
@@ -421,11 +441,114 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void onClick(View v) {
-        if (InternetHelper.CheckInternetConectivityandShowToast(getDockActivity())) {
+       /* if (InternetHelper.CheckInternetConectivityandShowToast(getDockActivity())) {
             MapControllerFragment mapControllerFragment = MapControllerFragment.newInstance();
             mapControllerFragment.setDelegate(this);
             DialogFactory.showMapControllerDialog(getDockActivity(), mapControllerFragment);
+        }*/
+        requestLocationPermission();
+    }
+
+    private void requestLocationPermission() {
+        Dexter.withActivity(getDockActivity())
+                .withPermissions(
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION)
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+
+                        if (report.areAllPermissionsGranted()) {
+                          /*  if (InternetHelper.CheckInternetConectivityandShowToast(getDockActivity())) {
+                                edtEmail.setCursorVisible(false);
+                                MapControllerFragment mapControllerFragment = MapControllerFragment.newInstance();
+                                mapControllerFragment.setDelegate(ProfileFragment.this);
+
+                                DialogFactory.showMapControllerDialog(getDockActivity(), mapControllerFragment);
+                            }*/
+                            openLocationSelector();
+                        }
+
+                        // check for permanent denial of any permission
+                        if (report.isAnyPermissionPermanentlyDenied()) {
+                            requestLocationPermission();
+
+                        } else if (report.getDeniedPermissionResponses().size() > 0) {
+                            requestLocationPermission();
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                }).
+                withErrorListener(new PermissionRequestErrorListener() {
+                    @Override
+                    public void onError(DexterError error) {
+                        UIHelper.showShortToastInCenter(getDockActivity(), "Grant LocationEnt Permission to processed");
+                        openSettings();
+                    }
+                })
+
+                .onSameThread()
+                .check();
+
+
+    }
+
+    private void openSettings() {
+
+        Intent intent = new Intent();
+        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        Uri uri = Uri.fromParts("package", getDockActivity().getPackageName(), null);
+        intent.setData(uri);
+        startActivity(intent);
+    }
+
+    private void openLocationSelector() {
+
+        try {
+           /* Intent intent =
+                    new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
+                            .build(getDockActivity());*/
+            PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+            startActivityForResult(builder.build(getDockActivity()), PLACE_AUTOCOMPLETE_REQUEST_CODE);
+            //this.startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+        } catch (Exception e) {
+
+            e.printStackTrace();
         }
+
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+
+                Place place = PlaceAutocomplete.getPlace(getDockActivity(), data);
+                if (place != null) {
+                    UIHelper.hideSoftKeyboard(getDockActivity(), getView());
+                    this.location = place.getLatLng();
+                    serviceHelper.enqueueCall(webService.eVoucherSearchMap(String.valueOf(location.latitude), String.valueOf(location.longitude), prefHelper.getSignUpUser().getToken()), WebServiceConstants.EVOUCHER);
+                }
+
+            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
+                Status status = PlaceAutocomplete.getStatus(getDockActivity(), data);
+
+            } else if (resultCode == RESULT_CANCELED) {
+                // The user canceled the operation.
+            }
+        }
+
     }
 }
 

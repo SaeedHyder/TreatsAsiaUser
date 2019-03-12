@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:fillViewport="true">
 
     <LinearLayout
+        android:id="@+id/llMainFrame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -40,7 +42,7 @@
                     android:layout_marginRight="@dimen/x14"
                     android:layout_marginLeft="@dimen/x5"
                     android:gravity="center"
-                    tools:text="Cash Voucher"
+
                     android:textColor="@color/white"
                     android:textSize="@dimen/x14"
                     app:typeface="Roboto-Regular.ttf" />
@@ -81,21 +83,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="left"
+                    android:text="@string/price"
                     android:textSize="@dimen/x12"
                     app:typeface="Roboto-Regular.ttf"
-                    android:visibility="invisible"/>
+                    />
 
                 <com.app.usertreatzasia.ui.views.AnyTextView
                     android:id="@+id/txtAfterDiscount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_marginLeft="@dimen/x5"
                     android:alpha="0.8"
                     android:gravity="left"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/x15"
+                    android:textSize="@dimen/x12"
                     app:typeface="Roboto-Regular.ttf"
-                    android:visibility="invisible"/>
+                 />
             </LinearLayout>
 
             <LinearLayout
@@ -121,7 +124,7 @@
                         android:layout_gravity="right"
                         android:alpha="0.8"
                         android:gravity="center"
-                        tools:text="50"
+
                         android:textColor="@color/appGolden"
                         android:textSize="@dimen/x15"
                         app:typeface="Roboto-Regular.ttf" />
@@ -425,8 +428,8 @@
 
         <ImageView
             android:id="@+id/img_barcode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/x100"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/x20"
             android:scaleType="fitXY"

@@ -72,6 +72,7 @@ public class InviteFriendsFragment extends BaseFragment {
     public void setTitleBar(TitleBar titleBar) {
         super.setTitleBar(titleBar);
         titleBar.hideButtons();
+        titleBar.showBackButton();
         titleBar.setSubHeading(getString(R.string.invite_friends));
     }
     private void ShareMyCode(String message){

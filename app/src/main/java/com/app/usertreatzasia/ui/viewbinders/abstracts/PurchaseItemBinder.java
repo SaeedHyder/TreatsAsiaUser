@@ -32,7 +32,7 @@ public class PurchaseItemBinder extends ViewBinder<PurchaseEnt> {
 
         final PurchaseItemBinder.ViewHolder viewHolder = (PurchaseItemBinder.ViewHolder) view.getTag();
 
-        viewHolder.txtTicketId.setText("#"+entity.getEventDetail().getId()+"");
+        viewHolder.txtTicketId.setText("#"+entity.getId());
         viewHolder.txtEvent.setText(entity.getEventDetail().getEventName()+"");
         viewHolder.txtDate.setText(DateHelper.dateFormat(entity.getEventDetail().getStartDate(), AppConstants.DateFormat_DMY, AppConstants.DateFormat_YMD) + "");
     }

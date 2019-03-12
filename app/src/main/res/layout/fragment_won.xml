@@ -22,8 +22,9 @@
     <ListView
         android:id="@+id/lv_won"
         android:layout_width="match_parent"
-        android:layout_marginLeft="@dimen/x10"
-        android:layout_marginRight="@dimen/x10"
+        android:paddingTop="@dimen/x10"
+        android:paddingBottom="@dimen/x10"
+        android:clipToPadding="false"
         android:layout_height="match_parent"
         android:scrollbars="none"
         android:visibility="visible"

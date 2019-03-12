@@ -6,10 +6,19 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/x10"
+        android:layout_marginEnd="@dimen/x10"
+        android:layout_marginStart="@dimen/x10"
+        android:layout_marginTop="@dimen/x3"
+        app:cardCornerRadius="@dimen/x3"
+        app:cardElevation="@dimen/x5">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/x10"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -84,23 +93,24 @@
                 android:orientation="horizontal">
 
                 <com.app.usertreatzasia.ui.views.AnyTextView
-                    android:id="@+id/txtActualAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="left"
+                    android:gravity="left|center_vertical"
+                    android:layout_gravity="center_vertical"
                     android:textSize="@dimen/x12"
+                    android:text="@string/price"
                     app:typeface="Roboto-Regular.ttf"
-                    tools:text="$602" />
+                   />
 
                 <com.app.usertreatzasia.ui.views.AnyTextView
                     android:id="@+id/txtAfterDiscount"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_marginLeft="@dimen/x5"
                     android:alpha="0.8"
                     android:gravity="left"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/x15"
+                    android:textSize="@dimen/x12"
                     app:typeface="Roboto-Regular.ttf"
                     tools:text="$482" />
             </LinearLayout>
@@ -152,7 +162,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x10"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_gravity="center_vertical">
 
 
             <LinearLayout
@@ -176,7 +189,7 @@
                     android:layout_marginLeft="@dimen/x3"
                     android:gravity="center_vertical"
                     android:text="@string/expires_on"
-                    android:textSize="@dimen/x12"
+                    android:textSize="@dimen/x11"
                     app:typeface="Roboto-Regular.ttf" />
 
                 <com.app.usertreatzasia.ui.views.AnyTextView
@@ -185,7 +198,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x2"
                     android:gravity="center_vertical"
-                    android:textSize="@dimen/x12"
+                    android:textSize="@dimen/x11"
                     app:typeface="Roboto-Regular.ttf"
                     tools:text="June 25 2017" />
             </LinearLayout>
@@ -220,7 +233,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/x2"
                     android:gravity="center_vertical"
-                    android:textSize="@dimen/x12"
+                    android:textSize="@dimen/x11"
                     app:typeface="Roboto-Regular.ttf"
                     tools:text="4100 Federal Blvd" />
 
@@ -236,4 +249,6 @@
             android:textColor="@color/white" />
 
     </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 </LinearLayout>

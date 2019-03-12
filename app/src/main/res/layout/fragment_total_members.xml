@@ -28,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/x10"
-            android:layout_weight="0.8"
+            android:layout_weight="1"
             android:text="@string/tier_1"
             android:textColor="@color/white"
             android:textSize="@dimen/x16" />
@@ -37,9 +37,8 @@
             android:id="@+id/tv_tier_1"
             app:typeface="Roboto-Regular.ttf"
             tools:text="AED 90"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
             android:gravity="end"
             android:textColor="@color/white"
             android:textSize="@dimen/x16" />
@@ -73,7 +72,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/x10"
-            android:layout_weight="0.8"
+            android:layout_weight="1"
             android:text="@string/tier_2"
             android:textColor="@color/white"
             android:textSize="@dimen/x16" />
@@ -82,9 +81,9 @@
             android:id="@+id/tv_tier_2"
             app:typeface="Roboto-Regular.ttf"
             tools:text="AED 90"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
+
             android:gravity="end"
             android:textColor="@color/white"
             android:textSize="@dimen/x16" />

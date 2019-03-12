@@ -14,6 +14,7 @@ import com.app.usertreatzasia.activities.DockActivity;
 import com.app.usertreatzasia.entities.RewardsWonEnt;
 import com.app.usertreatzasia.fragments.WonDetailFragment;
 import com.app.usertreatzasia.global.AppConstants;
+import com.app.usertreatzasia.global.UtilsGlobal;
 import com.app.usertreatzasia.helpers.BasePreferenceHelper;
 import com.app.usertreatzasia.helpers.DateHelper;
 import com.app.usertreatzasia.ui.views.AnyTextView;
@@ -52,8 +53,7 @@ public class RewardsWonWalletItemBinder extends ViewBinder<RewardsWonEnt> {
         imageLoader = ImageLoader.getInstance();
         final RewardsWonItemBinder.ViewHolder viewHolder = (RewardsWonItemBinder.ViewHolder) view.getTag();
 
-        viewHolder.txtActualAmount.setVisibility(View.GONE);
-        viewHolder.txtAfterDiscount.setVisibility(View.GONE);
+
         String terms_condition = "";
         goToHome = "goToHome";
 
@@ -83,18 +83,15 @@ public class RewardsWonWalletItemBinder extends ViewBinder<RewardsWonEnt> {
 
 
         imageLoader.displayImage(entity.getRewardDetail().getRewardImage(), viewHolder.ivOfferImage);
-        viewHolder.txtActualAmount.setPaintFlags(viewHolder.txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        viewHolder.txtActualAmount.setText(prefHelper.getConvertedAmountCurrrency() + "" + entity.getRewardDetail().getOriginalPrice() + "");
-        viewHolder.txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + "" + entity.getRewardDetail().getRewardPrice() + "");
 
-        updatedActualPrice = Float.valueOf(entity.getRewardDetail().getOriginalPrice()) * prefHelper.getConvertedAmount();
-        String formattedValuePrice = String.format("%.2f", updatedActualPrice);
-        viewHolder.txtActualAmount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePrice + "");
 
-        //viewHolder.txtAfterDiscount.setText("$" + entity.getRewardPrice() + "");
-        updatedDiscountedPrice = Float.valueOf(entity.getRewardDetail().getRewardPrice()) * prefHelper.getConvertedAmount();
+       // updatedActualPrice = Float.valueOf(entity.getRewardDetail().getOriginalPrice()) * prefHelper.getConvertedAmount();
+
+        updatedDiscountedPrice = Float.valueOf((entity.getRewardDetail().getRewardPrice())) * prefHelper.getConvertedAmount();
         String formattedValuePriceDiscounted = String.format("%.2f", updatedDiscountedPrice);
-        viewHolder.txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
+
+        viewHolder.txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency()+" "+formattedValuePriceDiscounted);
+
 
         final String finalTerms_condition = terms_condition;
 
@@ -118,8 +115,7 @@ public class RewardsWonWalletItemBinder extends ViewBinder<RewardsWonEnt> {
         viewHolder.btnTermsCondition.setVisibility(View.VISIBLE);
         viewHolder.tv_start_end_date.setText(DateHelper.dateFormat(entity.getRewardDetail().getStartDate(), AppConstants.DateFormat_DM, AppConstants.DateFormat_YMD) + " - " + DateHelper.dateFormat(entity.getRewardDetail().getEndDate(), AppConstants.DateFormat_DM, AppConstants.DateFormat_YMD));
 
-        viewHolder.txtActualAmount.setVisibility(View.GONE);
-        viewHolder.txtAfterDiscount.setVisibility(View.GONE);
+
     }
 
     static class ViewHolder extends BaseViewHolder {
@@ -127,8 +123,6 @@ public class RewardsWonWalletItemBinder extends ViewBinder<RewardsWonEnt> {
         ImageView ivOfferImage;
         @BindView(R.id.txtRewardTitle)
         AnyTextView txtRewardTitle;
-        @BindView(R.id.txtActualAmount)
-        AnyTextView txtActualAmount;
         @BindView(R.id.txtAfterDiscount)
         AnyTextView txtAfterDiscount;
         @BindView(R.id.txtRewardDetail)

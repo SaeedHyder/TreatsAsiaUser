@@ -73,4 +73,5 @@ public class WebServiceConstants {
     public static final String getAdCms = "getAdCms";
     public static final String getTierAmount = "getTierAmount";
     public static final String getTierRecord = "getTierRecord";
+    public static final String ReferRestaurant = "ReferRestaurant";
 }

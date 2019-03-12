@@ -38,8 +38,7 @@ public class CouponDetailFragment extends BaseFragment {
     AnyTextView txtPaidType;
     @BindView(R.id.txt_couponDetail)
     AnyTextView txtCouponDetail;
-    @BindView(R.id.txtActualAmount)
-    AnyTextView txtActualAmount;
+
     @BindView(R.id.txtAfterDiscount)
     AnyTextView txtAfterDiscount;
     @BindView(R.id.txt_expire_time)
@@ -70,6 +69,9 @@ public class CouponDetailFragment extends BaseFragment {
     AnyTextView tvPromoCode;
     @BindView(R.id.ll_promo_code)
     LinearLayout llPromoCode;
+    @BindView(R.id.llMainFrame)
+    LinearLayout llMainFrame;
+
     private int ID;
     private String Type;
     private String goToHome;
@@ -118,10 +120,12 @@ public class CouponDetailFragment extends BaseFragment {
 //        RedeemCouponFragment fragment;
         switch (Tag) {
             case WebServiceConstants.FlashSaleDetail:
+                llMainFrame.setVisibility(View.VISIBLE);
                 setDetailData((EvoucherEnt) result);
                 global = (EvoucherEnt) result;
                 break;
             case WebServiceConstants.CouponDetail:
+                llMainFrame.setVisibility(View.VISIBLE);
                 setDetailData((EvoucherEnt) result);
                 global = (EvoucherEnt) result;
                 break;
@@ -192,47 +196,35 @@ public class CouponDetailFragment extends BaseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        txtActualAmount.setVisibility(View.INVISIBLE);
-        txtAfterDiscount.setVisibility(View.INVISIBLE);
+        llMainFrame.setVisibility(View.GONE);
         buttonChecker = false;
         if (prefHelper != null && prefHelper.getSignUpUser() != null && prefHelper.getSignUpUser().getToken() != null)
             serviceHelper.enqueueCall(webService.getCouponDetail(ID + "", prefHelper.getSignUpUser().getToken()), WebServiceConstants.CouponDetail);
 
-        txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
         goToHome = "goToHome";
 
-        txtActualAmount.setVisibility(View.INVISIBLE);
-        txtAfterDiscount.setVisibility(View.INVISIBLE);
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        txtActualAmount.setVisibility(View.INVISIBLE);
-        txtAfterDiscount.setVisibility(View.INVISIBLE);
+
         buttonChecker = false;
         if (prefHelper != null && prefHelper.getSignUpUser() != null && prefHelper.getSignUpUser().getToken() != null)
             serviceHelper.enqueueCall(webService.getCouponDetail(ID + "", prefHelper.getSignUpUser().getToken()), WebServiceConstants.CouponDetail);
-        txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
-        txtActualAmount.setVisibility(View.INVISIBLE);
-        txtAfterDiscount.setVisibility(View.INVISIBLE);
+
+
     }
 
     private void setDetailData(EvoucherEnt result) {
         if (result != null) {
             if (result.getType() != null)
                 txtPaidType.setText(UtilsGlobal.getVoucherType(result.getType() + "", getDockActivity()));
-/*        if (result.getType().equals("cash_voucher")) {
-            txtPaidType.setText("Cash Voucher");
-        } else if (result.getType().equals("discount_coupon")) {
-            txtPaidType.setText("Discount Coupon");
-        } else if (result.getType().equals("promo_code")) {
-            txtPaidType.setText("Promo Code");
-        }*/
 
-            txtActualAmount.setVisibility(View.INVISIBLE);
-            txtAfterDiscount.setVisibility(View.INVISIBLE);
+
             if (result.getEvoucherLike() != null) {
                 if (result.getEvoucherLike() == 1) {
                     if (getMainActivity() != null && getTitleBar() != null)
@@ -240,34 +232,26 @@ public class CouponDetailFragment extends BaseFragment {
                 } else if (getMainActivity() != null && getTitleBar() != null)
                     getTitleBar().getCheckbox().setChecked(false);
             }
-            int discountAmount = (Integer.parseInt(result.getProductDetail().getPrice()) / 100) * (Integer.parseInt(result.getAmount()));
-            int AfterDiscount = (Integer.parseInt(result.getProductDetail().getPrice())) - discountAmount;
-            txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            txtActualAmount.setText("$" + result.getProductDetail().getPrice() + "");
-            txtAfterDiscount.setText("$" + AfterDiscount + "");
-            txtAfterDiscount.setText(UtilsGlobal.getRemainingAmount(Integer.parseInt(result.getAmount()), Integer.parseInt(result.getProductDetail().getPrice())));
 
-            updatedActualPrice = Float.valueOf(result.getProductDetail().getPrice()) * prefHelper.getConvertedAmount();
-            String formattedValuePrice = String.format("%.2f", updatedActualPrice);
-            txtActualAmount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePrice + "");
 
-            updatedDiscountedPrice = Float.valueOf(UtilsGlobal.getRemainingAmountWithoutDollar(Integer.parseInt(result.getAmount()), Integer.parseInt(result.getProductDetail().getPrice()))) * prefHelper.getConvertedAmount();
-            String formattedValuePriceDiscounted = String.format("%.2f", updatedDiscountedPrice);
-            txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
+
+            if (result.getAmount() != null && result.getProductDetail() != null && result.getProductDetail().getPrice() != null && prefHelper != null && prefHelper.getConvertedAmount() != null) {
+                updatedDiscountedPrice = Float.valueOf(UtilsGlobal.getRemainingAmountWithoutDollar(Integer.parseInt(result.getAmount()), Integer.parseInt(result.getProductDetail().getPrice()))) * prefHelper.getConvertedAmount();
+                String formattedValuePriceDiscounted = String.format("%.2f", updatedDiscountedPrice);
+                txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
+            }
+
+
 
             if (result.getExpiryDate() != null)
                 txtExpireTime.setText(getDockActivity().getString(R.string.expires_on_detail) + " " + DateHelper.getFormatedDate("yyyy-MM-dd", "MMM dd yyyy",
                         result.getExpiryDate() + ""));
             if (result.getCount() != null)
                 txtRemainingQty.setText(getDockActivity().getString(R.string.remaining_qty) + " " + result.getCount()); //result.getCount());
-        /*int discountAmount = (Integer.parseInt(result.getProductDetail().getPrice()) / 100) * (Integer.parseInt(result.getAmount()));
-        int AfterDiscount = (Integer.parseInt(result.getProductDetail().getPrice())) - discountAmount;*/
-            //txtAfterDiscount.setText("$" + UtilsGlobal.getRemainingAmountForRedeemCoupon(Integer.parseInt(result.getProductDetail().getPrice()), Integer.parseInt(result.getAmount())));
+
             if (result.getProductDetail() != null && result.getProductDetail().getProductImage() != null)
                 ImageLoader.getInstance().displayImage(result.getProductDetail().getProductImage(), ivCouponImage);
-            //txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            //txtActualAmount.setText(getString(R.string.selected_current) + result.getProductDetail().getPrice() + "");
-        /*txtAfterDiscount.setText(getString(R.string.selected_current) + AfterDiscount + "");*/
+
             if (result.getLocation() != null)
                 txtAddress.setText(result.getLocation() + " ");
             if (result.getTermCondition() != null)
@@ -284,70 +268,9 @@ public class CouponDetailFragment extends BaseFragment {
             ll_points_1.setVisibility(View.VISIBLE);
             if (result.getPoint() != null)
                 txtPointsAmount1.setText(result.getPoint() + "");
-        /*
-        if (result.getTypeSelect().equals("isFree")) {
-            txtPointsAmount.setText(result.getPoint() + "");
-            txtPoints.setText("Points");
-        } else if (result.getTypeSelect().equals("isPoint")){
-            txtPointsAmount.setText(result.getPoint() + "");
-            txtPoints.setText("Points");
-        } else if (result.getTypeSelect().equals("isCredit")){
-            txtPointsAmount.setText(result.getPoint() + "");
-            txtPoints.setText("Credits");
-        } else if (result.getTypeSelect().equals("isCash")){
-            txtPointsAmount.setText(result.getPoint() + "");
-            txtPoints.setText("$");
-        }*/
-
-            //txtRemainingQty.setText("Remaining Qty" + result.getProductDetail().getQuantity());
-
-/*        switch (prefHelper.getSelectedLanguage()) {
-            case AppConstants.ENGLISH:
-                if ((result.getTitle() + "").contains("%")) {
-                    txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getTitle(),
-                            UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getTitle() + ""),
-                            UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getTitle() + ""),
-                            getDockActivity()));
-                } else
-                    txtCouponDetail.setText(result.getTitle() + "");
-
-                txtTermsDetails.setText(result.getTermCondition() + "");
-
-                break;
-            case AppConstants.MALAYSIAN:
-                if ((result.getMaTitle() + "").contains("%")) {
-                    txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getMaTitle(),
-                            UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getMaTitle() + ""),
-                            UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getMaTitle() + ""),
-                            getDockActivity()));
-                } else
-                    txtCouponDetail.setText(result.getMaTitle() + "");
-
-                txtTermsDetails.setText(result.getMaTermCondition() + "");
-                break;
-            case AppConstants.INDONESIAN:
-                if ((result.getInTitle() + "").contains("%")) {
-                    txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getInTitle(),
-                            UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getInTitle() + ""),
-                            UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getInTitle() + ""),
-                            getDockActivity()));
-                } else
-                    txtCouponDetail.setText(result.getInTitle() + "");
-
-                txtTermsDetails.setText(result.getInTermCondition() + "");
-                break;
-            default:
-                if ((result.getTitle() + "").contains("%")) {
-                    txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getTitle(),
-                            UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getTitle() + ""),
-                            UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getTitle() + ""),
-                            getDockActivity()));
-                } else
-                    txtCouponDetail.setText(result.getTitle() + "");
 
 
-                break;
-        }*/
+
 
             if (prefHelper != null && prefHelper.getSelectedLanguage() != null && result.getTitle() != null) {
                 if (prefHelper.getSelectedLanguage().equals(AppConstants.ENGLISH)) {
@@ -360,8 +283,6 @@ public class CouponDetailFragment extends BaseFragment {
                     txtCouponDetail.setText(result.getTitle() + "");
                 }
             }
-            txtActualAmount.setVisibility(View.INVISIBLE);
-            txtAfterDiscount.setVisibility(View.INVISIBLE);
         }
         buttonChecker = true;
     }

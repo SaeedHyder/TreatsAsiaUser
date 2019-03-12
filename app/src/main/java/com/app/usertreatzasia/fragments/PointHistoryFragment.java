@@ -11,6 +11,7 @@ import android.widget.ListView;
 import com.app.usertreatzasia.R;
 import com.app.usertreatzasia.entities.PointHistoryEnt;
 import com.app.usertreatzasia.fragments.abstracts.BaseFragment;
+import com.app.usertreatzasia.global.AppConstants;
 import com.app.usertreatzasia.global.WebServiceConstants;
 import com.app.usertreatzasia.helpers.UIHelper;
 import com.app.usertreatzasia.ui.adapters.ArrayListAdapter;
@@ -35,7 +36,10 @@ public class PointHistoryFragment extends BaseFragment {
     private ArrayList<PointHistoryEnt> pointHistroryResult;
     private ArrayList<PointHistoryEnt> userCollection;
 
-    public static PointHistoryFragment newInstance() {
+    private static String type;
+
+    public static PointHistoryFragment newInstance(String typeKey) {
+        type=typeKey;
         return new PointHistoryFragment();
     }
 
@@ -63,7 +67,12 @@ public class PointHistoryFragment extends BaseFragment {
 
     private void getPointHistoryList() {
 
-            serviceHelper.enqueueCall(webService.getPointHistory(prefHelper.getSignUpUser().getToken()), WebServiceConstants.POINTS_HISTORY);
+        if(type!=null && type.equals(AppConstants.Spend)){
+            serviceHelper.enqueueCall(webService.getPointHistory("1",prefHelper.getSignUpUser().getToken()), WebServiceConstants.POINTS_HISTORY);
+        }else{
+            serviceHelper.enqueueCall(webService.getPointHistory("2",prefHelper.getSignUpUser().getToken()), WebServiceConstants.POINTS_HISTORY);
+        }
+
     }
 
     @Override
@@ -98,7 +107,12 @@ public class PointHistoryFragment extends BaseFragment {
         super.setTitleBar(titleBar);
         titleBar.hideButtons();
         titleBar.showBackButton();
-        titleBar.setSubHeading(getString(R.string.point_history));
+        if(type!=null && type.equals(AppConstants.Spend)){
+            titleBar.setSubHeading(getString(R.string.spent_history));
+        }else{
+            titleBar.setSubHeading(getString(R.string.earned_history));
+        }
+
 /*        titleBar.showFilterButtonCorner(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

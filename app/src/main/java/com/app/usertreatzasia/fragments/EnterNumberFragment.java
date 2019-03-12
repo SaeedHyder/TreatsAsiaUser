@@ -145,7 +145,7 @@ public class EnterNumberFragment extends BaseFragment {
                             location.getLongitude(), 1);
 
                     if (addresses != null && !addresses.isEmpty()) {
-                        countryCode = addresses.get(0).getCountryName();
+                       // countryCode = addresses.get(0).getCountryName();
                         countryCode = addresses.get(0).getCountryCode();
                         if (countryCode != null) {
                             prefHelper.setCountryCode(countryCode);

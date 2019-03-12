@@ -47,8 +47,6 @@ public class CouponWaletDetailFragment extends BaseFragment {
     AnyTextView txtPaidType;
     @BindView(R.id.txt_couponDetail)
     AnyTextView txtCouponDetail;
-    @BindView(R.id.txtActualAmount)
-    AnyTextView txtActualAmount;
     @BindView(R.id.txtAfterDiscount)
     AnyTextView txtAfterDiscount;
     @BindView(R.id.txt_expire_time)
@@ -81,6 +79,9 @@ public class CouponWaletDetailFragment extends BaseFragment {
     Button btn_cancel;
     @BindView(R.id.btn_website_link)
     Button btnWebsiteLink;
+    @BindView(R.id.llMainFrame)
+    LinearLayout llMainFrame;
+
     private BuyVoucherEnt evoucherEntity = new BuyVoucherEnt();
     private int ID;
     private String URL;
@@ -135,6 +136,7 @@ public class CouponWaletDetailFragment extends BaseFragment {
         switch (Tag) {
 
             case WebServiceConstants.VoucherWalletDetail:
+                llMainFrame.setVisibility(View.VISIBLE);
                 setDetailData((WalletEvoucherDetailEnt) result);
                 global = ((WalletEvoucherDetailEnt) result);
                 break;
@@ -220,15 +222,15 @@ public class CouponWaletDetailFragment extends BaseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        llMainFrame.setVisibility(View.GONE);
         prefHelper.setEvoucherId(ID);
         serviceHelper.enqueueCall(webService.getWalletVoucherDetail(ID + "", prefHelper.getSignUpUser().getToken()), WebServiceConstants.VoucherWalletDetail);
 
-        txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
         ll_amount_points.setVisibility(View.GONE);
         imageLoader = ImageLoader.getInstance();
 
-        txtActualAmount.setVisibility(View.GONE);
-        txtAfterDiscount.setVisibility(View.GONE);
+
     }
 
     private void setDetailData(WalletEvoucherDetailEnt result) {
@@ -240,84 +242,19 @@ public class CouponWaletDetailFragment extends BaseFragment {
                 txtPaidType.setText(UtilsGlobal.getVoucherType(result.getEvoucher_detail().getType() + "", getDockActivity()));
                 txtExpireTime.setText(getString(R.string.expires_on_detail) + " " + DateHelper.getFormatedDate("yyyy-MM-dd", "MMMM dd yyyy",
                         result.getEvoucher_detail().getExpiryDate() + ""));
-            /*txtRemainingQty.setText(getString(R.string.remaining_qty) + " " + result.getEvoucher_detail().getProductDetail().getQuantity()); //result.getCount());*/
-/*            int discountAmount = (Integer.parseInt(result.getEvoucher_detail().getProductDetail().getPrice()) / 100) *
-                    (Integer.parseInt(result.getEvoucher_detail().getAmount()));
-            int AfterDiscount = (Integer.parseInt(result.getEvoucher_detail().getProductDetail().getPrice())) - discountAmount;
 
-            ImageLoader.getInstance().displayImage(result.getEvoucher_detail().getProductDetail().getProductImage(), ivCouponImage);
-            txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            txtActualAmount.setText(getString(R.string.selected_current) + result.getEvoucher_detail().getProductDetail().getPrice() + "");
-            txtAfterDiscount.setText(getString(R.string.selected_current) + AfterDiscount + "");*/
                 int discountAmount = (Integer.parseInt(result.getEvoucher_detail().getProductDetail().getPrice()) / 100) * (Integer.parseInt(result.getEvoucher_detail().getAmount()));
                 int AfterDiscount = (Integer.parseInt(result.getEvoucher_detail().getProductDetail().getPrice())) - discountAmount;
 
                 imageLoader.displayImage(result.getEvoucher_detail().getProductDetail().getProductImage(), ivCouponImage);
-                txtActualAmount.setPaintFlags(txtActualAmount.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                txtActualAmount.setText("$" + result.getEvoucher_detail().getProductDetail().getPrice() + "");
-                txtAfterDiscount.setText("$" + AfterDiscount + "");
-                txtAfterDiscount.setText(UtilsGlobal.getRemainingAmount(Integer.parseInt(result.getEvoucher_detail().getAmount()), Integer.parseInt(result.getEvoucher_detail().getProductDetail().getPrice())));
-                //txtPaidType.setText(Utils.getVoucherType(result.getEvoucher_detail().getType() + "", getDockActivity()) + "");
-                //txtAfterDiscount.setText(UtilsGlobal.getRemainingAmount(Integer.parseInt(result.getEvoucher_detail().getAmount()), Integer.parseInt(result.getEvoucher_detail().getProductDetail().getPrice())));
 
-
-                updatedActualPrice = Float.valueOf(result.getEvoucher_detail().getProductDetail().getPrice()) * prefHelper.getConvertedAmount();
-                String formattedValuePrice = String.format("%.2f", updatedActualPrice);
-                txtActualAmount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePrice + "");
-
-                //viewHolder.txtAfterDiscount.setText("$" + entity.getRewardPrice() + "");
                 updatedDiscountedPrice = Float.valueOf(UtilsGlobal.getRemainingAmountWithoutDollar(Integer.parseInt(result.getEvoucher_detail().getAmount()), Integer.parseInt(result.getEvoucher_detail().getProductDetail().getPrice()))) * prefHelper.getConvertedAmount();
                 String formattedValuePriceDiscounted = String.format("%.2f", updatedDiscountedPrice);
-                txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency() + " " + formattedValuePriceDiscounted + "");
+                txtAfterDiscount.setText(prefHelper.getConvertedAmountCurrrency()+" "+formattedValuePriceDiscounted);
 
                 txtAddress.setText(result.getEvoucher_detail().getLocation() + " ");
 
-            /*switch (prefHelper.getSelectedLanguage()) {
-                case AppConstants.ENGLISH:
-                    if ((result.getEvoucher_detail().getTitle() + "").contains("%")) {
-                        txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getEvoucher_detail().getTitle(),
-                                UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getEvoucher_detail().getTitle() + ""),
-                                UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getEvoucher_detail().getTitle() + ""),
-                                getDockActivity()));
-                    } else
-                        txtCouponDetail.setText(result.getEvoucher_detail().getTitle() + "");
 
-                    txtTermsDetails.setText(result.getEvoucher_detail().getTermCondition() + "");
-
-                    break;
-                case AppConstants.MALAYSIAN:
-                    if ((result.getEvoucher_detail().getMaTitle() + "").contains("%")) {
-                        txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getEvoucher_detail().getMaTitle(),
-                                UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getEvoucher_detail().getMaTitle() + ""),
-                                UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getEvoucher_detail().getMaTitle() + ""),
-                                getDockActivity()));
-                    } else
-                        txtCouponDetail.setText(result.getEvoucher_detail().getMaTitle() + "");
-
-                    txtTermsDetails.setText(result.getEvoucher_detail().getMaTermCondition() + "");
-                    break;
-                case AppConstants.INDONESIAN:
-                    if ((result.getEvoucher_detail().getInTitle() + "").contains("%")) {
-                        txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getEvoucher_detail().getInTitle(),
-                                UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getEvoucher_detail().getInTitle() + ""),
-                                UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getEvoucher_detail().getInTitle() + ""),
-                                getDockActivity()));
-                    } else
-                        txtCouponDetail.setText(result.getEvoucher_detail().getInTitle() + "");
-
-                    txtTermsDetails.setText(result.getEvoucher_detail().getInTermCondition() + "");
-                    break;
-                default:
-                    if ((result.getEvoucher_detail().getTitle() + "").contains("%")) {
-                        txtCouponDetail.setText(UtilsGlobal.setSpanString(result.getEvoucher_detail().getTitle(),
-                                UtilsGlobal.startIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getEvoucher_detail().getTitle() + ""),
-                                UtilsGlobal.endIndexOf(Pattern.compile(AppConstants.Regex_Number_Pattern), result.getEvoucher_detail().getTitle() + ""),
-                                getDockActivity()));
-                    } else
-                        txtCouponDetail.setText(result.getEvoucher_detail().getTitle() + "");
-                    txtTermsDetails.setText(Html.fromHtml(result.getEvoucher_detail().getTermCondition()));
-                    break;
-            }*/
                 if (Type.equalsIgnoreCase("Gift")) {
                     if (prefHelper != null && prefHelper.getLikeCountEvoucher() != null) {
                         if (prefHelper.getLikeCountEvoucher() == 1) {
@@ -356,8 +293,7 @@ public class CouponWaletDetailFragment extends BaseFragment {
                     btnRedeem.setVisibility(View.VISIBLE);
                 }
                 txtPointsAmount.setText(result.getEvoucher_detail().getPoint() + "");
-                txtActualAmount.setVisibility(View.GONE);
-                txtAfterDiscount.setVisibility(View.GONE);
+
             }
         }
     }
